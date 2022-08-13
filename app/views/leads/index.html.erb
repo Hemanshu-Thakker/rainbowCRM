@@ -1,0 +1,14 @@
+<div>
+    <% @leads.each do |lead| %>
+        <div class="lead-tile">
+            <a href="<%= leads_path(id: lead) %>">
+                <span><%= lead.id %></span>
+                <span><%= lead.customer.name %></span>
+                <span><%= lead.customer.mobile %></span>
+                <span><%= lead.item_type %></span>
+                <span><%= lead.quantity %></span>
+                <span><%= lead.slip_no %></span>
+            </a>
+        </div>
+    <% end %>
+</div>

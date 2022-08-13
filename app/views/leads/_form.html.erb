@@ -1,0 +1,56 @@
+<%= form_with model: @lead, url: leads_path(id: @lead) do |form| %>
+    <div>
+        <%= form.label :customer, "Customer" %>
+        <%= form.select :customer_id, customer_select, {}, {id: 'customer_select_2'} %>
+    </div>
+
+    <div>
+        <%= form.label :employee, "Employee" %>
+        <%= form.select :employee_id, employee_select %>
+    </div>
+
+    <div>
+        <%= form.label :item, "Item" %>
+        <%= form.select :item_type, item_select %>
+    </div>
+
+    <div>
+        <%= form.label :quantity, "Quantity" %>
+        <%= form.text_field :quantity %>
+    </div>
+
+    <div>
+        <%= form.label :paper_type, "Paper Type" %>
+        <%= form.text_field :paper_type %>
+    </div>
+
+    <div>
+        <%= form.label :colour, "Colour" %>
+        <%= form.text_field :colour %>
+    </div>
+
+    <div>
+        <%= form.label :s_no, "S. No" %>
+        <%= form.text_field :s_no %>
+    </div>
+
+    <div>
+        <%= form.label :slip_no, "Slip. No" %>
+        <%= form.text_field :slip_no %>
+    </div>
+
+    <div>
+        <%= form.label :description, "Description" %>
+        <%= form.text_field :description %>
+    </div>
+
+    <div>
+        <%= form.label :payment_details, "Payment Details" %>
+        <%= form.text_field :payment_details %>
+    </div>
+
+    <div>
+        <%= form.submit "Submit" %>
+    </div>
+
+<% end %>

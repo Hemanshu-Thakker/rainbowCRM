@@ -1,0 +1,8 @@
+<div>
+    <h2>Show Page</h2>
+    <div>
+        <%= @customer.to_json %>
+    </div>
+    <button><a href="<%= edit_customers_path(id: @customer) %>">Edit</a></button>
+    <button><a href="<%= customers_path(id: @customer) %>" data-method="delete" data-confirm="Are you sure ?">Delete</a></button>
+</div>

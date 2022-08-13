@@ -1,0 +1,8 @@
+<div>
+    <h2>Show Page</h2>
+    <div>
+        <%= @lead.to_json %>
+    </div>
+    <button><a href="<%= edit_leads_path(id: @lead) %>">Edit</a></button>
+    <button><a href="<%= leads_path(id: @lead) %>" data-method="delete" data-confirm="Are you sure ?">Delete</a></button>
+</div>
