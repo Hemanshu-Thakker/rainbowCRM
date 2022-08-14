@@ -1,8 +1,57 @@
-<div>
-    <h2>Show Page</h2>
-    <div>
-        <%= @lead.to_json %>
+<div class="leads-show">
+    <div class="back-button">
+        <a href="<%= root_path %>"><i class="bi bi-arrow-right"></i>Back</a>
     </div>
-    <button><a href="<%= edit_leads_path(id: @lead) %>">Edit</a></button>
-    <button><a href="<%= leads_path(id: @lead) %>" data-method="delete" data-confirm="Are you sure ?">Delete</a></button>
+    <div class="row">
+        <div class="col-lg-3 lead-customer">
+            <div class="lead-h3 border-bottom">Customer Info</div>
+            <div class="lead-dull">Name</div>
+            <div class="lead-text padding-bottom-2"><%= @lead.customer.name rescue '-' %></div>
+            <div class="lead-dull">Company Name</div>
+            <div class="lead-text padding-bottom-2"><%= @lead.customer.company_name rescue '-' %></div>
+            <div class="lead-dull">Primary Contact</div>
+            <div class="lead-text padding-bottom-2"><%= @lead.customer.mobile rescue '-' %></div>
+            <div class="lead-dull">Email</div>
+            <div class="lead-text padding-bottom-2"><%= @lead.customer.email rescue '-' %></div>
+            <div class="lead-dull">GST number</div>
+            <div class="lead-text padding-bottom-2"><%= @lead.customer.gst_number rescue '-' %></div>
+            <div class="lead-dull">Additional Info</div>
+            <div class="lead-text padding-bottom-2"><%= @lead.customer.note rescue '-' %></div>
+        </div>
+        <div class="col-lg-6 lead-order">
+            <div class="lead-h3 border-bottom">Order Info</div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="lead-dull">Order Item</div>
+                    <div class="lead-text padding-bottom-2"><%= capitalize(@lead.item_type) rescue '-' %></div>
+                    <div class="lead-dull">Quantity</div>
+                    <div class="lead-text padding-bottom-2"><%= @lead.quantity rescue '-' %></div>
+                    <div class="lead-dull">Paprt Type</div>
+                    <div class="lead-text padding-bottom-2"><%= @lead.paper_type rescue '-' %></div>
+                    <div class="lead-dull">Colour</div>
+                    <div class="lead-text padding-bottom-2"><%= @lead.colour rescue '-' %></div>
+                    <div class="lead-dull">Size</div>
+                    <div class="lead-text padding-bottom-2"><%= @lead.size rescue '-' %></div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="lead-dull">Assigned To</div>
+                    <div class="lead-text padding-bottom-2"><%= @lead.employee.name rescue '-' %></div>
+                    <div class="lead-dull">Slip.No</div>
+                    <div class="lead-text padding-bottom-2"><%= @lead.slip_no rescue '-' %></div>
+                    <div class="lead-dull">Serial.No</div>
+                    <div class="lead-text padding-bottom-2"><%= @lead.s_no rescue '-' %></div>
+                    <div class="lead-dull">Payment Details</div>
+                    <div class="lead-text padding-bottom-2"><%= @lead.payment_details rescue '-' %></div>
+                    <div class="lead-dull">Estimated Price</div>
+                    <div class="lead-text padding-bottom-2"><%= @lead.price rescue '-' %></div>
+                </div>
+            </div>
+            <div class="lead-dull">Description</div>
+            <div class="lead-text padding-bottom-2"><%= @lead.description rescue '-' %></div>
+        </div>
+    </div>
+    <div class="button-div">
+        <span class="edit-button"><a href="<%= edit_leads_path(id: @lead) %>">Edit</a></span>
+        <span class="delete-button"><a href="<%= leads_path(id: @lead) %>" data-method="delete" data-confirm="Are you sure ?">Delete</a></span>
+    </div>
 </div>

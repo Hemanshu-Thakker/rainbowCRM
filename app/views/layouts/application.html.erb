@@ -18,13 +18,23 @@
       <!-- Side navbar -->
       <div class="sidebar">
         <div class="brand">
-          RAINBOW PRINTERS
+          <%= image_tag "logo.png" %>
         </div>
         <ul>
-          <li><a href="<%= root_path %>">Home</a></li>
-          <li><a href="<%= new_leads_path %>">Create Order</a></li>
-          <li><a href="">Search</a></li>
-          <li><a href="/admin_dashboard">Admin Dashboard</a></li>
+          <li><a href="<%= root_path %>">
+            <div>
+              <span><%= image_tag "home.png" %></span>Home
+            </div>
+          </a></li>
+          <li><a href="<%= new_leads_path %>">
+            <span><%= image_tag "insights.png" %></span>Create Order
+          </a></li>
+          <li><a href="">
+            <span><%= image_tag "overview.png" %></span>Search
+          </a></li>
+          <li><a href="/admin_dashboard">
+            <span><%= image_tag "overview.png" %></span>Admin Dashboard
+          </a></li>
         </ul>
       </div>
       
@@ -37,7 +47,8 @@
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
           <div class="profile-info">
-            Name: Hemanshu Thakker
+            Hemanshu Thakker
+            <span><%= image_tag "avatar.png" %></span>
           </div>
         </nav>
 
@@ -53,7 +64,7 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
       $('#customer_select_2').select2({
-          width: "50%",
+          width: "80%",
           placeholder: 'Search for customer',
           minimumInputLength: -1
       });

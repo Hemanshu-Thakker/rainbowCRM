@@ -1,5 +1,12 @@
-<div>
-    <% @leads.each do |lead| %>
+<div class="index-leads">
+    <div class="filter-flex">
+        <div><%= image_tag "filter.png" %></div>
+        <div class="filter-button">
+            <span>Sort by Date: Descending</span>
+            <span class="close-filter">&times;</span>
+        </div>
+    </div>
+    <!-- <% @leads.each do |lead| %>
         <div class="lead-tile">
             <a href="<%= leads_path(id: lead) %>">
                 <span><%= lead.id %></span>
@@ -10,5 +17,52 @@
                 <span><%= lead.slip_no %></span>
             </a>
         </div>
-    <% end %>
+    <% end %> -->
+
+    <div class="index-leads-list">
+        <% @leads.each do |lead| %>
+        <a href="<%= leads_path(id: lead) %>">
+            <div class="lead-tile">
+                <div class="info">
+                    <div class="alignment">
+                        <div>
+                            <div class="lead-h3"><%= capitalize(lead.item_type) %></div>
+                            <div class="flexer">
+                                <div class="padding-right-1">
+                                    <div class="lead-dull">Quantity</div>
+                                    <div class="lead-text"><%= lead.quantity == "" ? "-" : lead.quantity rescue '-' %></div>
+                                </div>
+                                <div class="padding-right-1">
+                                    <div class="lead-dull">Assigned To</div>
+                                    <div class="lead-text"><%= lead.employee.name rescue '-' %></div>
+                                </div>
+                                <div class="padding-right-1">
+                                    <div class="lead-dull">Paper Type</div>
+                                    <div class="lead-text"><%= lead.paper_type == "" ? "-" : lead.paper_type %></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="right-align">
+                            <div class="lead-h3"><%= lead.customer.name rescue 'Not available' %></div>
+                            <div class="flexer">
+                                <div class="padding-left-1">
+                                    <div class="lead-dull">Comapny name</div>
+                                    <div class="lead-text"><%= lead.customer.company_name == "" ? "-" : lead.customer.company_name rescue '-' %></div>
+                                </div>
+                                <div class="padding-left-1">
+                                    <div class="lead-dull">Contact info</div>
+                                    <div class="lead-text"><%= lead.customer.mobile rescue '-' %></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="status">
+                        <div class="lead-h3">Status</div>
+                        <div class="lead-text">Just In</div>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <% end %>
+    </div>
 </div>
