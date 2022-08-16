@@ -79,7 +79,6 @@
    align-items: center;
    background-color: #FFF8ED;
    padding: 20px 10px;
-   position: fixed;
    width: -webkit-fill-available;
  }
 
@@ -92,13 +91,12 @@
  }
 
  .main-content{
-  padding-top: 80px;
   background-color: #FFF8ED;
   min-height: 100vh;
  }
 
  .index-leads{
-  margin: 20px;
+  padding: 20px;
  }
 
  .filter-flex img {
@@ -163,6 +161,10 @@
   padding-right: 1rem;
  }
 
+ .padding-right-2{
+  padding-right: 2rem;
+ }
+
  .padding-left-1{
   padding-left: 1rem;
  }
@@ -186,7 +188,7 @@
  }
 
  .leads-show{
-  margin: 30px;
+  padding: 20px;
  }
 
  .lead-customer{
@@ -241,7 +243,7 @@
  }
 
  .lead-form{
-  margin: 20px;
+  padding: 20px;
  }
 
  .lead-form-input{
@@ -274,4 +276,41 @@
 
 .back-button a{
   color: #4D1C0D;
+}
+
+.customer-show{
+  padding: 20px;
+}
+
+.flexer{
+  display: flex;
+  align-items: center;
+}
+
+.flexer-space-between{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cutomer-info{
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 20px;
+}
+
+.customer-form{
+  padding: 20px;
+}
+
+.customer-index{
+  padding: 20px;
+}
+
+.customer-tile{
+  padding: 20px;
+  background-color: #fff;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  color: #4D1C0D!important;
 }

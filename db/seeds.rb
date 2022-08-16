@@ -13,6 +13,3 @@ Employee.create(name: 'Piyush', email: 'piyush@rainbow.com', password: 'Piyush',
 
 Customer.create(name: 'Piyush', email: '', mobile: '9894503030')
 Customer.create(name: 'Rupal', email: '', mobile: '9344066696')
-
-Lead.create(customer_id: Customer.last.id, item_type: 0, quantity: 200, paper_type: 'Random GSM', size: 'random size', s_no: 'erdctvfgbyh', payment_details: 'xrdcfvghbnj', slip_no: 'rdfgh', price: 400.00)
-Lead.create(customer_id: Customer.last.id, item_type: 1, quantity: 300, paper_type: 'Random GSM', size: 'random size', s_no: 'erdctvfgbyh', payment_details: 'xrdcfvghbnj', slip_no: 'rdfgh', price: 400.00)

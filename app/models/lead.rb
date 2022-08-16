@@ -14,7 +14,8 @@ class Lead < ApplicationRecord
 		bill_book: 7,
 		brochure: 8,
 		id_card: 9,
-		sticker: 10
+		sticker: 10,
+		others: 11
 	}
 
     enum status: {
