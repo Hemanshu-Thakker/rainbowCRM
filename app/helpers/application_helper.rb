@@ -23,9 +23,19 @@ module ApplicationHelper
         customers_list = Customer.all
         result = []
         customers_list.each do |customer|
-            result << [customer.name,customer.id]
+            result << [displayName(customer),customer.id]
         end
         result
+    end
+
+    def displayName(customer)
+        if customer.name.present? and customer.company_name.present?
+            customer.name + " - " + customer.company_name
+        elsif customer.name.present?
+            customer.name
+        else
+            customer.company_name
+        end
     end
 
     def capitalize(item)

@@ -11,7 +11,10 @@
     <div class="row">
         <div class="col-lg-6">
             <div class='lead-form-input' style="margin-bottom: 20px;">
-                <div>Customer</div>
+                <div class="flexer">
+                    <div>Customer</div>
+                    <div class="padding-left-1"><a href="<%= new_customers_path %>">Add New</a></div>
+                </div>
                 <%= form.select :customer_id, customer_select, {}, {id: 'customer_select_2', class: 'form-control lead-form-input-style'} %>
             </div>
 
