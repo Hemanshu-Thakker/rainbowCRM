@@ -26,19 +26,11 @@
                 <div class="info">
                     <div class="alignment">
                         <div>
-                            <div class="lead-h3"><%= capitalize(lead.item_type) %></div>
+                            <div class="lead-h3"><%= item_type_csv(lead) %></div>
                             <div class="flexer">
-                                <div class="padding-right-1">
-                                    <div class="lead-dull">Quantity</div>
-                                    <div class="lead-text"><%= lead.quantity == "" ? "-" : lead.quantity rescue '-' %></div>
-                                </div>
                                 <div class="padding-right-1">
                                     <div class="lead-dull">Assigned To</div>
                                     <div class="lead-text"><%= lead.employee.name rescue '-' %></div>
-                                </div>
-                                <div class="padding-right-1">
-                                    <div class="lead-dull">Paper Type</div>
-                                    <div class="lead-text"><%= lead.paper_type == "" ? "-" : lead.paper_type %></div>
                                 </div>
                             </div>
                         </div>

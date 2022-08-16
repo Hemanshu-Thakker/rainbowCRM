@@ -9,14 +9,23 @@ module ApplicationHelper
         result
     end
     
-    def item_select
-        items_list = Lead.item_types.keys
+    def item_select_options
+        items_list = Lead.item_type_lists
         result = []
-        items_list.each do |item|
+        items_list.each do |item,index|
             new_item = capitalize(item)
-            result << [new_item, item]
+            result << [new_item, new_item]
         end
         result
+    end
+
+    def item_select_value(lead)
+        JSON.parse lead.item_type rescue []
+    end
+
+    def item_type_csv(lead)
+        result_arr = JSON.parse lead.item_type rescue []
+        result_arr.reject { |a| a.empty? }.join(", ")
     end
 
     def customer_select
@@ -39,8 +48,12 @@ module ApplicationHelper
     end
 
     def capitalize(item)
-        item = item.dup
-        item[0] = item[0].capitalize
-        item.split("_").join(" ")
+        begin
+            item = item.dup
+            item[0] = item[0].capitalize
+            item.split("_").join(" ")
+        rescue
+            "Error_occured"
+        end
     end
 end

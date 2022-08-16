@@ -3,20 +3,20 @@ class Lead < ApplicationRecord
 	belongs_to :employee
 	has_rich_text :description
     
-    enum item_type: {
-		visiting_card: 0,
-		poster: 1,
-		website_development: 2,
-		design: 3,
-		catalogue: 4,
-		envelope: 5,
-		letterpad: 6,
-		bill_book: 7,
-		brochure: 8,
-		id_card: 9,
-		sticker: 10,
-		others: 11
-	}
+    enum item_type_list: [
+		"visiting_card",
+		"poster",
+		"website_development",
+		"design",
+		"catalogue",
+		"envelope",
+		"letterpad",
+		"bill_book",
+		"brochure",
+		"id_card",
+		"sticker",
+		"others"
+	]
 
     enum status: {
 		just_in: 0,

@@ -19,8 +19,8 @@
             </div>
 
             <div class='lead-form-input'>
-                <%= form.label :item, "Item" %>
-                <%= form.select :item_type, item_select, {}, {class: 'form-control lead-form-input-style'} %>
+                <div>Item</div>
+                <%= form.select :item_type, options_for_select(item_select_options,item_select_value(@lead)), {}, {id: 'item_select_2',class: 'form-control lead-form-input-style', multiple: true   } %>
             </div>
 
             <div class='lead-form-input'>

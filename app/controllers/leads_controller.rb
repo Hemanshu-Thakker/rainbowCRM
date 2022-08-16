@@ -34,14 +34,14 @@ class LeadsController < ApplicationController
     end
 
     def destroy
-        binding.pry
         @lead = Lead.find_by(id: params[:id])
         @lead.destroy
         redirect_to root_path
     end
 
     private
-    def lead_params
-        params.require(:lead).permit(:customer_id, :employee_id, :item_type, :description, :quantity, :paper_type, :colour, :s_no, :slip_no, :payment_details)
-    end
+        def lead_params
+            # params["lead"]["item_type"] = params["lead"]["item_type"].to_json
+            params.require(:lead).permit(:customer_id, :employee_id, :description, :quantity, :paper_type, :colour, :s_no, :slip_no, :size, :payment_details, :item_type => [])
+        end
 end

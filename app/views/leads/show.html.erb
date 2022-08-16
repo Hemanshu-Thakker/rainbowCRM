@@ -7,7 +7,7 @@
             Back</i>
         </a>
     </div>
-    <div class="row">
+    <div class="row" style="margin-left: auto;">
         <div class="col-lg-3 lead-customer">
             <div class="lead-h3 border-bottom">Customer Info</div>
             <div class="lead-dull">Name</div>
@@ -28,7 +28,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="lead-dull">Order Item</div>
-                    <div class="lead-text padding-bottom-2"><%= capitalize(@lead.item_type) rescue '-' %></div>
+                    <div class="lead-text padding-bottom-2"><%= item_type_csv(@lead) rescue '-' %></div>
                     <div class="lead-dull">Quantity</div>
                     <div class="lead-text padding-bottom-2"><%= @lead.quantity rescue '-' %></div>
                     <div class="lead-dull">Paprt Type</div>

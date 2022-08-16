@@ -77,17 +77,18 @@ ActiveRecord::Schema.define(version: 2022_08_14_211706) do
   create_table "leads", force: :cascade do |t|
     t.bigint "customer_id", null: false
     t.integer "employee_id"
-    t.integer "item_type"
+    t.string "item_type"
     t.text "heading"
     t.text "description"
-    t.integer "quantity"
+    t.text "quantity"
     t.text "paper_type"
     t.text "colour"
     t.text "size"
-    t.string "s_no"
+    t.text "s_no"
     t.text "payment_details"
     t.text "slip_no"
     t.float "price"
+    t.integer "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["customer_id"], name: "index_leads_on_customer_id"
