@@ -2,21 +2,6 @@ class Lead < ApplicationRecord
     belongs_to :customer
 	belongs_to :employee
 	has_rich_text :description
-    
-    enum item_type_list: [
-		"visiting_card",
-		"poster",
-		"website_development",
-		"design",
-		"catalogue",
-		"envelope",
-		"letterpad",
-		"bill_book",
-		"brochure",
-		"id_card",
-		"sticker",
-		"others"
-	]
 
     enum status: {
 		just_in: 0,
@@ -26,4 +11,26 @@ class Lead < ApplicationRecord
 		binding: 4,
 		post_press: 5
 	}
+
+	def self.item_type_list 
+		[
+			"visiting_card",
+			"poster",
+			"website_development",
+			"design",
+			"catalogue",
+			"envelope",
+			"letterpad",
+			"bill_book",
+			"brochure",
+			"id_card",
+			"sticker",
+			"binding",
+			"banner/flex",
+			"standee",
+			"vinyl_stickers",
+			"receipt_books",
+			"others"
+		]
+	end
 end

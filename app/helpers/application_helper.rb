@@ -10,7 +10,7 @@ module ApplicationHelper
     end
     
     def item_select_options
-        items_list = Lead.item_type_lists
+        items_list = Lead.item_type_list
         result = []
         items_list.each do |item,index|
             new_item = capitalize(item)
