@@ -327,3 +327,8 @@
   border-radius: 20px;
   color: #4D1C0D!important;
 }
+
+.index-leads .dropdown-menu li{
+  padding: 5px 15px;
+  cursor: pointer;
+}

@@ -9,7 +9,8 @@ class Lead < ApplicationRecord
 		printing: 2,
 		development: 3,
 		binding: 4,
-		post_press: 5
+		post_press: 5,
+		completed: 6
 	}
 
 	def self.item_type_list 

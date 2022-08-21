@@ -1,6 +1,22 @@
 <div class="index-leads">
     <div class="filter-flex">
-        <div><%= image_tag "filter.png" %></div>
+        <div>
+            <a class="" href="#" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <%= image_tag "filter.png" %>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li id="mahesh-filter">
+                    <% data = {"filter" => {"assigned_to" => "Mahesh"}} %>
+                    <a href="<%= root_path(data) %>">Filter by: Assigned To Mahesh</a>
+                </li>
+                <li id="shankar-filter">
+                    <% data = {"filter" => {"assigned_to" => "Shankar"}} %>
+                    <a href="<%= root_path(data) %>">Filter by: Assigned To Shankar</a>
+                </li>
+                <li><hr class="dropdown-divider"></li>
+                <!-- <li><a class="dropdown-item" href="#">Sort by:</a></li> -->
+            </ul>
+        </div>
         <div class="filter-button">
             <span>Sort by Date: Descending</span>
             <span class="close-filter">&times;</span>
