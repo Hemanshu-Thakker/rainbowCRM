@@ -74,4 +74,16 @@ module ApplicationHelper
             ['Just In','just_in']
         ]
     end
+
+    def status_background(lead)
+        if (Date.today - lead.created_at.to_date).to_i >= 2
+            if lead.employee.name == "Nancy"
+                'status-bg-default'
+            else
+                'status-bg-red'
+            end
+        else
+            'status-bg-default'
+        end
+    end
 end

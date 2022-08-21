@@ -22,18 +22,6 @@
             <span class="close-filter">&times;</span>
         </div>
     </div>
-    <!-- <% @leads.each do |lead| %>
-        <div class="lead-tile">
-            <a href="<%= leads_path(id: lead) %>">
-                <span><%= lead.id %></span>
-                <span><%= lead.customer.name %></span>
-                <span><%= lead.customer.mobile %></span>
-                <span><%= lead.item_type %></span>
-                <span><%= lead.quantity %></span>
-                <span><%= lead.slip_no %></span>
-            </a>
-        </div>
-    <% end %> -->
 
     <div class="index-leads-list">
         <% @leads.each do |lead| %>
@@ -68,7 +56,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="status">
+                    <div class="status <%= status_background(lead) %>">
                         <div class="lead-h3">Status</div>
                         <div class="lead-text">Just In</div>
                     </div>

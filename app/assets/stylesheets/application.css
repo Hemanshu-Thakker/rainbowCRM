@@ -142,11 +142,18 @@
  }
 
  .index-leads-list .lead-tile .status{
-  background-color: #FFB02F;
   padding: 20px;
   min-height: 121px;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
+ }
+
+ .status-bg-default{
+  background-color: #FFB02F;
+ }
+
+ .status-bg-red{
+  background-color: red;
  }
 
  .index-leads-list .lead-tile {
