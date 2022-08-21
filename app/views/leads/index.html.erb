@@ -40,6 +40,10 @@
                                     <div class="lead-dull">Assigned To</div>
                                     <div class="lead-text"><%= lead.employee.name rescue '-' %></div>
                                 </div>
+                                <div class="padding-right-1">
+                                    <div class="lead-dull">Created At</div>
+                                    <div class="lead-text"><%= standard_datetime(lead.created_at) rescue '-' %></div>
+                                </div>
                             </div>
                         </div>
                         <div class="right-align">

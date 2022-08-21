@@ -86,4 +86,8 @@ module ApplicationHelper
             'status-bg-default'
         end
     end
+
+    def standard_datetime(date)
+        date.strftime("%d %b, %l:%M %p")
+    end
 end
