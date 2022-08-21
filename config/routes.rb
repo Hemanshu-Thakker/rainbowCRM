@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resource :customers
 
   get '/admin_dashboard', to: 'customers#index'
+  post '/leads/update/status', to: 'leads#update_status_complete', as: "lead_update_status"
 end

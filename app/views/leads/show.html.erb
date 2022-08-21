@@ -58,6 +58,12 @@
             <div class="lead-dull">Description</div>
             <div class="lead-text padding-bottom-2"><%= @lead.description rescue '-' %></div>
         </div>
+        <div class="col-lg-2 lead-buttons">
+            <div class="lead-h3">Ticket Actions</div>
+            <div class="ticket-actions">
+                <span class="ticket-action-green"><a href="<%= lead_update_status_path(id: @lead) %>" data-method="post" data-confirm="Are you sure?">Completed</a></span>
+            </div>
+        </div>
     </div>
     <div class="button-div">
         <span class="edit-button"><a href="<%= edit_customers_path(id: @lead.customer.id) %>">Edit Customer Info</a></span>

@@ -49,6 +49,12 @@ class LeadsController < ApplicationController
         redirect_to root_path
     end
 
+    def update_status_complete
+        @lead = Lead.find_by(id: params[:id])
+        @lead.update(status: "completed")
+        redirect_to root_path
+    end
+
     private
         def lead_params
             # params["lead"]["item_type"] = params["lead"]["item_type"].to_json
