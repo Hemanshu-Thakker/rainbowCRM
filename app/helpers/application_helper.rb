@@ -1,7 +1,11 @@
 module ApplicationHelper
     
-    def employee_select
-        employee_list = Employee.where.not(employee_type: "admin")
+    def employee_select(all=false)
+        if all
+            employee_list = Employee.all
+        else
+            employee_list = Employee.where.not(employee_type: "admin")
+        end
         result = []
         employee_list.each do |employee|
             result << [employee.name, employee.id]
