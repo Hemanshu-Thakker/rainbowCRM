@@ -31,6 +31,8 @@
                     <div class="lead-text padding-bottom-2"><%= item_type_csv(@lead) rescue '-' %></div>
                     <div class="lead-dull">Quantity</div>
                     <div class="lead-text padding-bottom-2"><%= @lead.quantity rescue '-' %></div>
+                    <div class="lead-dull">Created By</div>
+                    <div class="lead-text padding-bottom-2"><%= get_creater(@lead.created_by) rescue '-' %></div>
                     <div class="lead-dull">Paprt Type</div>
                     <div class="lead-text padding-bottom-2"><%= @lead.paper_type rescue '-' %></div>
                     <div class="lead-dull">Colour</div>
@@ -39,6 +41,8 @@
                     <div class="lead-text padding-bottom-2"><%= @lead.size rescue '-' %></div>
                 </div>
                 <div class="col-lg-6">
+                    <div class="lead-dull">Status</div>
+                    <div class="lead-text padding-bottom-2"><%= @lead.status rescue '-' %></div>
                     <div class="lead-dull">Assigned To</div>
                     <div class="lead-text padding-bottom-2"><%= @lead.employee.name rescue '-' %></div>
                     <div class="lead-dull">Slip.No</div>

@@ -18,7 +18,13 @@ class CustomersController < ApplicationController
     def create
         @customer = Customer.new(customer_params)
         if @customer.save
-            redirect_to customers_path(id: @customer)
+            if params["customer"]["remote"] == "true"
+                render json: @customer
+            else
+                redirect_to customers_path(id: @customer)
+            end
+        elsif params["customer"]["remote"] == true
+            render json: {error: 'Record not saved!'}
         else
             render "new"
         end

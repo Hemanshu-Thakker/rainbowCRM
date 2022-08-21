@@ -42,6 +42,6 @@ class LeadsController < ApplicationController
     private
         def lead_params
             # params["lead"]["item_type"] = params["lead"]["item_type"].to_json
-            params.require(:lead).permit(:customer_id, :employee_id, :description, :quantity, :paper_type, :colour, :s_no, :slip_no, :size, :payment_details, :item_type => [])
+            params.require(:lead).permit(:customer_id, :employee_id, :created_by, :description, :quantity, :paper_type, :colour, :s_no, :slip_no, :size, :payment_details, :status, :item_type => [])
         end
 end

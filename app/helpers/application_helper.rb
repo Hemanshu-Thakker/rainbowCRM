@@ -1,7 +1,7 @@
 module ApplicationHelper
     
     def employee_select
-        employee_list = Employee.all
+        employee_list = Employee.where.not(employee_type: "admin")
         result = []
         employee_list.each do |employee|
             result << [employee.name, employee.id]
@@ -47,6 +47,10 @@ module ApplicationHelper
         end
     end
 
+    def get_creater(id)
+        Employee.find_by(id: id).name rescue 'Error_occured'
+    end
+
     def capitalize(item)
         begin
             item = item.dup
@@ -55,5 +59,15 @@ module ApplicationHelper
         rescue
             "Error_occured"
         end
+    end
+
+    def new_customer
+        Customer.new
+    end
+
+    def status_select_just_in
+        [
+            ['Just In','just_in']
+        ]
     end
 end

@@ -12,8 +12,10 @@
         <div class="col-lg-6">
             <div class='lead-form-input' style="margin-bottom: 20px;">
                 <div class="flexer">
-                    <div>Customer</div>
-                    <div class="padding-left-1"><a href="<%= new_customers_path %>">Add New</a></div>
+                    <div class="margin-right-auto">Customer</div>
+                    <div class="padding-left-1 text-primary add-new-position" data-bs-toggle="modal" data-bs-target="#customerFormModal">
+                        Add New
+                    </div>
                 </div>
                 <%= form.select :customer_id, customer_select, {}, {id: 'customer_select_2', class: 'form-control lead-form-input-style'} %>
             </div>
@@ -29,6 +31,22 @@
             </div>
 
             <div class='lead-form-input'>
+                <%= form.label :created_by, "Created By" %>
+                <%= form.select :created_by, employee_select, {}, {class: 'form-control lead-form-input-style'} %>
+            </div>
+
+            <div class='lead-form-input'>
+                <%= form.label :employee, "Assign To" %>
+                <%= form.select :employee_id, employee_select, {}, {class: 'form-control lead-form-input-style'} %>
+            </div>
+
+            <div class='lead-form-input'>
+                <%= form.label :status, "Status" %>
+                <%= form.select :status, status_select_just_in, {}, {class: 'form-control lead-form-input-style'} %>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class='lead-form-input'>
                 <%= form.label :paper_type, "Paper Type" %>
                 <%= form.text_field :paper_type, class: 'form-control lead-form-input-style' %>
             </div>
@@ -36,12 +54,6 @@
             <div class='lead-form-input'>
                 <%= form.label :colour, "Colour" %>
                 <%= form.text_field :colour, class: 'form-control lead-form-input-style' %>
-            </div>
-        </div>
-        <div class="col-lg-6">
-            <div class='lead-form-input'>
-                <%= form.label :employee, "Assign To" %>
-                <%= form.select :employee_id, employee_select, {}, {class: 'form-control lead-form-input-style'} %>
             </div>
 
             <div class='lead-form-input'>
@@ -72,9 +84,28 @@
     </div>
 
     <div class='lead-form-input' style="text-align: right;">
-    <span class="edit-button"><a href="<%= root_path %>">Cancel</a></span>
+        <span class="edit-button"><a href="<%= root_path %>">Cancel</a></span>
         <%= form.submit "Submit", class: 'edit_button' %>
     </div>
 
 <% end %>
+
+<div class="modal fade" id="customerFormModal" tabindex="-1" aria-labelledby="customerForm" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="customerFormModalLabel">New Customer</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <%= render 'customers/form', customer: new_customer, popup: true %>
+        </div>
+        <div class="modal-footer">
+            <span class="edit-button cursor-pointer" id="customer-close" data-bs-dismiss="modal">Close</span>
+            <button type="button" class="btn btn-warning" id="popup-customer-submit">Save Order</button>
+        </div>
+        </div>
+    </div>
+</div>
+
 </div>

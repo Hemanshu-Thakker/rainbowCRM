@@ -29,6 +29,10 @@
                             <div class="lead-h3"><%= item_type_csv(lead) %></div>
                             <div class="flexer">
                                 <div class="padding-right-1">
+                                    <div class="lead-dull">Created By</div>
+                                    <div class="lead-text"><%= get_creater(lead.created_by) rescue '-' %></div>
+                                </div>
+                                <div class="padding-right-1">
                                     <div class="lead-dull">Assigned To</div>
                                     <div class="lead-text"><%= lead.employee.name rescue '-' %></div>
                                 </div>

@@ -287,6 +287,19 @@
   align-items: center;
 }
 
+.cursor-pointer{
+  cursor: pointer;
+}
+
+.margin-right-auto{
+  margin-right: auto;
+}
+
+.add-new-position{
+  margin-right: 20%;
+  cursor: pointer;
+}
+
 .flexer-space-between{
   display: flex;
   align-items: center;
