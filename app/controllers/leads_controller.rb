@@ -4,7 +4,7 @@ class LeadsController < ApplicationController
             begin
                 employee_name = params["filter"]["assigned_to"]
                 employee = Employee.find_by_name(employee_name)
-                @leads = Lead.order(updated_at: :desc).where(id: employee.id)
+                @leads = Lead.order(updated_at: :desc).where(employee_id: employee.id)
             rescue
                 @leads = Lead.order(updated_at: :desc).where.not(status: "completed")
             end
