@@ -125,6 +125,12 @@
   align-items: center;
  }
 
+ .index-leads-list .lead-tile .info .flexer-right{
+  display: flex;
+  align-items: center;
+  justify-content: right;
+ }
+
  .index-leads-list .lead-tile .info{
   display: flex;
   align-items: center;
