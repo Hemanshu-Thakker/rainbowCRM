@@ -195,14 +195,20 @@
  }
 
  .leads-show{
-  padding: 20px;
+  padding: 20px!important;
  }
 
  .lead-customer{
   background-color: #fff;
   padding: 20px;
   border-radius: 20px;
-  margin-right: 20px;
+ }
+
+ .lead-activity{
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  margin-top: 20px;
  }
 
  .lead-order{
@@ -217,14 +223,13 @@
   text-align: center;
  }
 
- .border-bottom{
-  border-bottom: 1px solid #575757;
+ .border-botto{
   width: 90%;
   margin-bottom: 10px;
   padding-bottom: 10px;
  }
 
- .edit-button a{
+ .edit-button {
   padding: 10px 30px;
   background-color: #fff;
   cursor: pointer;
@@ -242,7 +247,7 @@
   border: 2px solid #FFB02F;
  }
 
- .delete-button a{
+ .delete-button {
   padding: 10px 30px;
   background-color: #FFB02F;
   cursor: pointer;
@@ -347,11 +352,11 @@
 }
 
 .ticket-action-green{
-  padding: 10px 20px;
+  padding: 10px 30px;
   background-color: green;
   color: #fff!important;
-  border-radius: 5px;
   cursor: pointer;
+  margin: 10px;
 }
 
 .ticket-actions{
