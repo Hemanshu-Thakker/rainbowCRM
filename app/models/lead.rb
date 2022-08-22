@@ -31,6 +31,7 @@ class Lead < ApplicationRecord
 			"standee",
 			"vinyl_stickers",
 			"receipt_books",
+			"certificate",
 			"others"
 		]
 	end
