@@ -51,11 +51,11 @@
                             </div>
                         </div>
                         <div class="right-align">
-                            <div class="lead-h3"><%= lead.customer.name rescue 'Not available' %></div>
+                            <div class="lead-h3"><%= lead.customer.company_name == "" ? 'Not available' : lead.customer.company_name rescue 'Not available' %></div>
                             <div class="flexer">
                                 <div class="padding-left-1">
                                     <div class="lead-dull">Comapny name</div>
-                                    <div class="lead-text"><%= lead.customer.company_name == "" ? "-" : lead.customer.company_name rescue '-' %></div>
+                                    <div class="lead-text"><%= lead.customer.name == "" ? "-" : lead.customer.name rescue '-' %></div>
                                 </div>
                                 <div class="padding-left-1">
                                     <div class="lead-dull">Contact info</div>
