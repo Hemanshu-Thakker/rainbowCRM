@@ -104,6 +104,35 @@
       alert("The form has errors, couldn't be submitted");
     }
 });
+
+      $('#show-status-update').on('change', function(){
+        $('.status-icons-div').css('display','flex');
+      });
+
+      $('.lead-status-style .bootstrap-close-icon').on('click', function(){
+        var data = $('.lead-status-style').data('current_lead');
+        $('.status-icons-div').css('display','none');
+        $('#show-status-update').val(data);
+      });
+
+      $('.lead-status-style .bootstrap-check-icon').on('click', function(){
+        var state_data = $('#show-status-update').val();
+        var lead_id = $('#lead-id').data("lead_id");
+        $.ajax({
+          url: "/leads/update/status",
+          type: "POST",
+          beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+          data: {id: lead_id, status: state_data},
+          success: function(data){
+              alert(data.success);
+              $('#show-status-area').text(state_data);
+              $('.status-icons-div').css('display','none');
+          },
+          error: function(){
+            console.log("AJAX call unsuccesful");
+          }
+        });
+      });
     </script>
   </body>
 </html>

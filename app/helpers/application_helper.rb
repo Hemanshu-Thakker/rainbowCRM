@@ -90,4 +90,16 @@ module ApplicationHelper
     def standard_datetime(date)
         date.strftime("%d %b, %l:%M %p")
     end
+
+    def status_options
+        result = []
+        Lead.statuses.each do |k,v|
+            result << [capitalize(k),k] if k != "completed"
+        end
+        result
+    end
+
+    def current_status(lead)
+        lead.status
+    end
 end

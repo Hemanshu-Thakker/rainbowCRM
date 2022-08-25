@@ -1,15 +1,18 @@
 class LeadsController < ApplicationController
     def index
+        @leads = Lead.order(updated_at: :desc).where.not(status: "completed")
         if params["filter"].present?
             begin
-                employee_name = params["filter"]["assigned_to"]
-                employee = Employee.find_by_name(employee_name)
-                @leads = Lead.order(updated_at: :desc).where(employee_id: employee.id).where.not(status: "completed")
+                employee_name = params["filter"]["assigned_to"] rescue false
+                lead_status = params["filter"]["sort_by_status"] rescue false
+                if employee_name
+                    employee = Employee.find_by_name(employee_name)
+                    @leads = @leads.where(employee_id: employee.id)
+                elsif lead_status
+                    @leads = @leads.where(status: lead_status)
+                end
             rescue
-                @leads = Lead.order(updated_at: :desc).where.not(status: "completed")
             end
-        else
-            @leads = Lead.order(updated_at: :desc).where.not(status: "completed")
         end
     end
 
@@ -51,8 +54,10 @@ class LeadsController < ApplicationController
 
     def update_status_complete
         @lead = Lead.find_by(id: params[:id])
-        @lead.update(status: "completed")
-        redirect_to root_path
+        if params[:status].present? and Lead.statuses.include?(params[:status])
+            @lead.update(status: params[:status])
+        end
+        render json: {success: "Lead successfully updated"}
     end
 
     private

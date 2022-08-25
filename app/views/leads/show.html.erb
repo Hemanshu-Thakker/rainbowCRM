@@ -1,4 +1,5 @@
 <div class="leads-show">
+    <span id="lead-id" data-lead_id="<%= @lead.id %>"></span>
     <div class="back-button">
         <a href="<%= root_path %>">
             <i><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
@@ -43,7 +44,7 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="lead-dull">Status</div>
-                        <div class="lead-text padding-bottom-2"><%= @lead.status rescue '-' %></div>
+                        <div class="lead-text padding-bottom-2" id="show-status-area"><%= @lead.status rescue '-' %></div>
                         <div class="lead-dull">Assigned To</div>
                         <div class="lead-text padding-bottom-2"><%= @lead.employee.name rescue '-' %></div>
                         <div class="lead-dull">Size</div>
@@ -64,14 +65,28 @@
         </div>
         <div class="col-lg-3">
             <div class="lead-buttons">
-                <div class="lead-h3">Ticket Actions</div>
                 <div class="ticket-actions">
+                    <div class="lead-h3">Update Status</div>
+                    <div class="lead-status-style" data-current_lead="<%= @lead.status %>">
+                        <%= select_tag "status", options_for_select(status_options,current_status(@lead)), class: 'form-control', id: 'show-status-update' %>
+                        <div class="status-icons-div">
+                        <span class="bootstrap-close-icon">
+                            &times;
+                        </span>
+                        <span class="bootstrap-check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                            </svg>
+                        </span>
+                        </div>
+                    </div>
+                    <div class="lead-h3">Ticket Actions</div>
                     <div class="button-div">
                         <div class="edit-button"><a href="<%= edit_customers_path(id: @lead.customer.id) %>">Edit Customer Info</a></div>
                         <div class="edit-button"><a href="<%= edit_leads_path(id: @lead) %>">Edit Order Info</a></div>
                         <div class="delete-button"><a href="<%= leads_path(id: @lead) %>" data-method="delete" data-confirm="Are you sure ?">Delete</a></div>
                     </div>
-                    <div class="ticket-action-green"><a href="<%= lead_update_status_path(id: @lead) %>" data-method="post" data-confirm="Are you sure?">Completed</a></div>
+                    <div class="ticket-action-green"><a href="<%= lead_update_status_path(id: @lead,status: 'completed') %>" data-method="post" data-confirm="Are you sure?">Completed</a></div>
                 </div>
             </div>
         </div>

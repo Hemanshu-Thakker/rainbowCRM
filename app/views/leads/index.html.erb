@@ -5,20 +5,34 @@
                 <%= image_tag "filter.png" %>
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li id="mahesh-filter">
+                <li>
                     <% data = {"filter" => {"assigned_to" => "Mahesh"}} %>
-                    <a href="<%= root_path(data) %>">Filter by: Assigned To Mahesh</a>
+                    <a class="dropdown-item" href="<%= root_path(data) %>">Filter by: Assigned To Mahesh</a>
                 </li>
-                <li id="shankar-filter">
+                <li>
                     <% data = {"filter" => {"assigned_to" => "Shankar"}} %>
-                    <a href="<%= root_path(data) %>">Filter by: Assigned To Shankar</a>
+                    <a class="dropdown-item" href="<%= root_path(data) %>">Filter by: Assigned To Shankar</a>
                 </li>
                 <li id="shankar-filter">
                     <% data = {"filter" => {"assigned_to" => "Nancy"}} %>
-                    <a href="<%= root_path(data) %>">Filter by: Assigned To Nancy</a>
+                    <a class="dropdown-item" href="<%= root_path(data) %>">Filter by: Assigned To Nancy</a>
                 </li>
                 <li><hr class="dropdown-divider"></li>
-                <!-- <li><a class="dropdown-item" href="#">Sort by:</a></li> -->
+                <li>
+                    <% data = {"filter" => {"sort_by_status" => "designing"}} %>
+                    <a class="dropdown-item" href="<%= root_path(data) %>">Sort by: Designing</a></li>
+                <li>
+                    <% data = {"filter" => {"sort_by_status" => "printing"}} %>
+                    <a class="dropdown-item" href="<%= root_path(data) %>">Sort by: Printing</a></li>
+                <li>
+                    <% data = {"filter" => {"sort_by_status" => "development"}} %>
+                    <a class="dropdown-item" href="<%= root_path(data) %>">Sort by: Development</a></li>
+                <li>
+                    <% data = {"filter" => {"sort_by_status" => "binding"}} %>
+                    <a class="dropdown-item" href="<%= root_path(data) %>">Sort by: Binding</a></li>
+                <li>
+                    <% data = {"filter" => {"sort_by_status" => "post_press"}} %>
+                    <a class="dropdown-item" href="<%= root_path(data) %>">Sort by: Post press</a></li>
             </ul>
         </div>
         <div class="filter-button">
@@ -66,7 +80,7 @@
                     </div>
                     <div class="status <%= status_background(lead) %>">
                         <div class="lead-h3">Status</div>
-                        <div class="lead-text">Just In</div>
+                        <div class="lead-text"><%= capitalize(lead.status) %></div>
                     </div>
                 </div>
             </div>

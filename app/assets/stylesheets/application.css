@@ -263,7 +263,7 @@
 }
 
  .button-div{
-  margin-top: 40px;
+  margin-top: 20px;
  }
 
  .lead-form{
@@ -353,8 +353,7 @@
 }
 
 .index-leads .dropdown-menu li{
-  padding: 5px 15px;
-  cursor: pointer;
+  
 }
 
 .ticket-action-green{
@@ -367,4 +366,33 @@
 
 .ticket-actions{
   margin-top: 30px;
+}
+
+.lead-status-style select{
+  width: -webkit-fill-available;
+  margin: 10px;
+  border: 2px solid #FFB02F;
+  border-radius: 0px!important;
+}
+
+.status-icons-div{
+  display: none;
+  justify-content: flex-end;
+  margin-right: 10px;
+}
+
+.bootstrap-check-icon{
+  background-color: green;
+  color: #fff;
+  padding: 6px 8px;
+  margin: auto 2px;
+  cursor: pointer;
+}
+
+.bootstrap-close-icon{
+  background-color: red;
+  color: #fff!important;
+  padding: 6px 10px;
+  margin: auto 2px;
+  cursor: pointer;
 }
