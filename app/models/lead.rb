@@ -32,6 +32,11 @@ class Lead < ApplicationRecord
 			"vinyl_stickers",
 			"receipt_books",
 			"certificate",
+			"admission_form",
+			"receipt_books",
+			"label",
+			"pamphlet",
+			"invitation",
 			"others"
 		]
 	end
