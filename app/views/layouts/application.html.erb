@@ -43,9 +43,9 @@
       <div class="main-inner">
         <!-- navbar -->
         <nav>
-          <form class="form-style">
-            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          <form class="form-style" action="<%= root_path %>">
+            <input class="form-control" type="search" name="query" value="<%= params[:query] %>" placeholder="Search" aria-label="Search">
+            <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
           </form>
           <div class="profile-info">
             <span><%= image_tag "avatar.png" %></span>

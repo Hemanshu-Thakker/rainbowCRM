@@ -40,4 +40,12 @@ class Lead < ApplicationRecord
 			"others"
 		]
 	end
+
+	def self.handle_index_filter(params)
+		
+	end
+
+	def self.handle_index_search(params)
+		
+	end
 end
