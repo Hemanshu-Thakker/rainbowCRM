@@ -6,39 +6,51 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
-                    <% data = {"filter" => {"assigned_to" => "Mahesh"}} %>
-                    <a class="dropdown-item" href="<%= root_path(data) %>">Filter by: Assigned To Mahesh</a>
+                    <% data =  "assigned_to:mahesh" %>
+                    <a class="dropdown-item" href="<%= root_path(build_params(data,params.to_unsafe_h)) %>">Assigned To: Mahesh</a>
                 </li>
                 <li>
-                    <% data = {"filter" => {"assigned_to" => "Shankar"}} %>
-                    <a class="dropdown-item" href="<%= root_path(data) %>">Filter by: Assigned To Shankar</a>
+                    <% data = "assigned_to:shankar" %>
+                    <a class="dropdown-item" href="<%= root_path(build_params(data,params.to_unsafe_h)) %>">Assigned To: Shankar</a>
                 </li>
                 <li id="shankar-filter">
-                    <% data = {"filter" => {"assigned_to" => "Nancy"}} %>
-                    <a class="dropdown-item" href="<%= root_path(data) %>">Filter by: Assigned To Nancy</a>
+                    <% data = "assigned_to:nancy" %>
+                    <a class="dropdown-item" href="<%= root_path(build_params(data,params.to_unsafe_h)) %>">Assigned To: Nancy</a>
                 </li>
                 <li><hr class="dropdown-divider"></li>
                 <li>
-                    <% data = {"filter" => {"sort_by_status" => "designing"}} %>
-                    <a class="dropdown-item" href="<%= root_path(data) %>">Sort by: Designing</a></li>
+                    <% data = "filter_by_status:just_in" %>
+                    <a class="dropdown-item" href="<%= root_path(build_params(data,params.to_unsafe_h)) %>">Filter by: Just In</a></li>
                 <li>
-                    <% data = {"filter" => {"sort_by_status" => "printing"}} %>
-                    <a class="dropdown-item" href="<%= root_path(data) %>">Sort by: Printing</a></li>
                 <li>
-                    <% data = {"filter" => {"sort_by_status" => "development"}} %>
-                    <a class="dropdown-item" href="<%= root_path(data) %>">Sort by: Development</a></li>
+                    <% data = "filter_by_status:designing" %>
+                    <a class="dropdown-item" href="<%= root_path(build_params(data,params.to_unsafe_h)) %>">Filter by: Designing</a></li>
                 <li>
-                    <% data = {"filter" => {"sort_by_status" => "binding"}} %>
-                    <a class="dropdown-item" href="<%= root_path(data) %>">Sort by: Binding</a></li>
+                    <% data = "filter_by_status:printing" %>
+                    <a class="dropdown-item" href="<%= root_path(build_params(data,params.to_unsafe_h)) %>">Filter by: Printing</a></li>
                 <li>
-                    <% data = {"filter" => {"sort_by_status" => "post_press"}} %>
-                    <a class="dropdown-item" href="<%= root_path(data) %>">Sort by: Post press</a></li>
+                    <% data = "filter_by_status:binding" %>
+                    <a class="dropdown-item" href="<%= root_path(build_params(data,params.to_unsafe_h)) %>">Filter by: Binding</a></li>
+                <li>
+                    <% data = "filter_by_status:post_press" %>
+                    <a class="dropdown-item" href="<%= root_path(build_params(data,params.to_unsafe_h)) %>">Filter by: Post press</a>
+                </li>
+                <li><hr class="dropdown-divider"></li>
+                <li>
+                    <% data = "priority:high" %>
+                    <a class="dropdown-item" href="<%= root_path(build_params(data,params.to_unsafe_h)) %>">Priority: High</a>
+                </li>
             </ul>
         </div>
-        <div class="filter-button">
-            <span>Sort by Date: Descending</span>
-            <span class="close-filter">&times;</span>
-        </div>
+        <% if params["filter"].present? %>
+            <% params["filter"].each do |key,value| %> 
+                <div class="filter-button">
+                    <span><%= capitalize(key) %> : <%= capitalize(value) %></span>
+                    <% data = key %>
+                    <span class="close-filter"><a href="<%= root_path(remove_params(data,params.to_unsafe_h)) %>">&times;</a></span>
+                </div>
+            <% end %>
+        <% end %>
     </div>
 
     <div class="index-leads-list">

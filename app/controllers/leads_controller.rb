@@ -4,12 +4,17 @@ class LeadsController < ApplicationController
         if params["filter"].present?
             begin
                 employee_name = params["filter"]["assigned_to"] rescue false
-                lead_status = params["filter"]["sort_by_status"] rescue false
-                if employee_name
-                    employee = Employee.find_by_name(employee_name)
+                lead_status = params["filter"]["filter_by_status"] rescue false
+                priority = params["filter"]["priority"] rescue false
+                if employee_name.present?
+                    employee = Employee.where('lower(name) = ?',employee_name).first
                     @leads = @leads.where(employee_id: employee.id)
-                elsif lead_status
+                end
+                if lead_status.present?
                     @leads = @leads.where(status: lead_status)
+                end
+                if priority.present?
+                    @leads
                 end
             rescue
             end

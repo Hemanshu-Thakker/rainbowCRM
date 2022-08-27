@@ -102,4 +102,25 @@ module ApplicationHelper
     def current_status(lead)
         lead.status
     end
+
+    def build_params(data,url_params)
+        params = filter_params_to_hash(url_params)
+        if data.present?
+            arr = data.split(":")
+            params["filter"][arr[0]] = arr[1]
+        end
+        params
+    end
+
+    def remove_params(data,url_params)
+        params = filter_params_to_hash(url_params)
+        if data.present?
+            params["filter"].delete(data)
+        end
+        params
+    end
+
+    def filter_params_to_hash(url_data)
+        url_data["filter"] == nil ? {"filter" => {}} : {"filter" => url_data["filter"]}
+    end
 end
