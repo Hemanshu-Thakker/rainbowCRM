@@ -88,7 +88,7 @@ module ApplicationHelper
     end
 
     def standard_datetime(date)
-        date.strftime("%d %b, %l:%M %p")
+        date.in_time_zone("Chennai").strftime("%d %b, %l:%M %p")
     end
 
     def status_options
