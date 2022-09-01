@@ -7,6 +7,10 @@ class Employee < ApplicationRecord
 		manager: 1,
 		designer: 2,
 		developer: 3,
-		finisher: 4
+		finisher: 4,
+		computer: 5
 	}
+
+	scope :soul, -> { where.not(employee_type: "computer") }
+	scope :not_admin , -> { where.not(employee_type: "admin") }
 end

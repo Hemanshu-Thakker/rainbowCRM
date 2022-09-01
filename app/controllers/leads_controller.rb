@@ -1,4 +1,5 @@
 class LeadsController < ApplicationController
+    skip_before_action :verify_authenticity_token, only: [:lead_generation]
     def index
         @leads = Lead.order(updated_at: :desc).where.not(status: "completed")
         if params["filter"].present?
@@ -69,9 +70,31 @@ class LeadsController < ApplicationController
         render json: {success: "Lead successfully updated"}
     end
 
+    def lead_generation
+        @customer = Customer.new(customer_api_params)
+        if @customer.save
+            @employee = Employee.find_by(employee_type: "computer")
+            @lead = Lead.new(customer_id: @customer.id, description: htmlIZE(params[:description]), employee_id: @employee.id, created_by: @employee.id, status: 'just_in')
+            if @lead.save
+                render json: {success: "Lead successfully created"}
+            else
+                render json: {error: "Lead creation issue"}
+            end
+        else
+            render json: {error: "Customer creation issue"}
+        end
+    end
+
     private
+        def htmlIZE(str)
+            "<div>"+str+"</div>"
+        end
+
+        def customer_api_params
+            params.permit(:name,:mobile,:email)
+        end
+
         def lead_params
-            # params["lead"]["item_type"] = params["lead"]["item_type"].to_json
             params.require(:lead).permit(:customer_id, :employee_id, :created_by, :description, :quantity, :paper_type, :colour, :s_no, :slip_no, :size, :payment_details, :status, :item_type => [])
         end
 end

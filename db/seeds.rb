@@ -11,3 +11,4 @@ Employee.create(name: 'Mahesh', email: 'mahesh@rainbow.com', password: 'mahesh',
 Employee.create(name: 'Shankar', email: 'shankar@rainbow.com', password: 'Shankar', contact: '', employee_type: 'designer')
 Employee.create(name: 'Piyush', email: 'piyush@rainbow.com', password: 'Piyush', contact: '', employee_type: 'admin')
 Employee.create(name: 'Ravi', email: 'ravi@rainbow.com', password: 'Ravi', contact: '', employee_type: 'finisher')
+Employee.create(name: 'LEAD MASTER', password: 'lead@master',employee_type: 'computer')

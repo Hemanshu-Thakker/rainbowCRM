@@ -136,6 +136,7 @@
   align-items: center;
   min-height: 121px;
   border-left: 5px solid #FFB02F;
+  background-color: #fff;
  }
 
  .index-leads-list .lead-tile .info .alignment{

@@ -10,18 +10,24 @@ class Lead < ApplicationRecord
 		development: 3,
 		binding: 4,
 		post_press: 5,
-		completed: 6
+		ready_for_delivery: 6,
+		payment_pending: 7,
+		completed: 8
 	}
+
+	scope :soul_less, -> { joins(:employee).where('employees.name ILIKE ?','LEAD MASTER') }
 
 	def self.item_type_list 
 		[
 			"visiting_card",
 			"poster",
-			"website_development",
+			"webs_design_&_development",
+			"digital_marketing",
 			"design",
 			"catalogue",
 			"envelope",
 			"letterpad",
+			"letterhead",
 			"bill_book",
 			"brochure",
 			"id_card",
@@ -33,10 +39,30 @@ class Lead < ApplicationRecord
 			"receipt_books",
 			"certificate",
 			"admission_form",
-			"receipt_books",
 			"label",
 			"pamphlet",
 			"invitation",
+			"diary",
+			"box",
+			"notepads",
+			"tag",
+			"folder",
+			"invoice_book",
+			"file",
+			"inserts",
+			"leaflet",
+			"hardcase_books",
+			"softcover_books",
+			"annual_report",
+			"calendar",
+			"Inlay cards",
+			"Booklet souvenir",
+			"magazine",
+			"Examination card",
+			"office stationery",
+			"Coupon",
+			"bag",
+			"Standy"
 			"others"
 		]
 	end

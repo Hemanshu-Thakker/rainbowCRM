@@ -6,4 +6,5 @@ Rails.application.routes.draw do
 
   get '/admin_dashboard', to: 'customers#index'
   post '/leads/update/status', to: 'leads#update_status_complete', as: "lead_update_status"
+  post '/lead_generation', to: 'leads#lead_generation'
 end
