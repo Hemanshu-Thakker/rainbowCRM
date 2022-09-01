@@ -2,9 +2,9 @@ module ApplicationHelper
     
     def employee_select(all=false)
         if all
-            employee_list = Employee.all
+            employee_list = Employee.soul
         else
-            employee_list = Employee.where.not(employee_type: "admin")
+            employee_list = Employee.soul.not_admin
         end
         result = []
         employee_list.each do |employee|
@@ -122,5 +122,9 @@ module ApplicationHelper
 
     def filter_params_to_hash(url_data)
         url_data["filter"] == nil ? {"filter" => {}} : {"filter" => url_data["filter"]}
+    end
+
+    def htmlIZE(str)
+        "<div>"+str+"</div>"
     end
 end

@@ -62,7 +62,7 @@ class Lead < ApplicationRecord
 			"office stationery",
 			"Coupon",
 			"bag",
-			"Standy"
+			"Standy",
 			"others"
 		]
 	end
