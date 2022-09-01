@@ -127,4 +127,8 @@ module ApplicationHelper
     def htmlIZE(str)
         "<div>"+str+"</div>"
     end
+
+    def last_month
+        (Time.now - 1.month).strftime("%B %Y")
+    end
 end
