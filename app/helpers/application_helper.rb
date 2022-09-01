@@ -131,4 +131,11 @@ module ApplicationHelper
     def last_month
         (Time.now - 1.month).strftime("%B %Y")
     end
+
+    def active?(url_params,data)
+        params = filter_params_to_hash(url_params)
+        orange = params["filter"]["filter_by_status"].present? rescue false
+        matcher = params["filter"]["filter_by_status"] == data if orange
+        orange and matcher ? "bg-orange" : "" 
+    end
 end
