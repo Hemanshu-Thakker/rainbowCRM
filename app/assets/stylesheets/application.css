@@ -397,3 +397,10 @@
   margin: auto 2px;
   cursor: pointer;
 }
+
+.report-tile{
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  margin: 15px;
+}

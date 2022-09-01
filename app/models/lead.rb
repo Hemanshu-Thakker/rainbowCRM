@@ -17,6 +17,12 @@ class Lead < ApplicationRecord
 
 	scope :soul_less, -> { joins(:employee).where('employees.name ILIKE ?','LEAD MASTER') }
 
+	scope :last_month, lambda {
+        previous_month_begin = (Time.now - 1.month).beginning_of_month
+        previous_month_end = (Time.now - 1.month).end_of_month
+        where('created_at BETWEEN ? and ?',previous_month_begin,previous_month_end)
+    }
+
 	def self.item_type_list 
 		[
 			"visiting_card",
