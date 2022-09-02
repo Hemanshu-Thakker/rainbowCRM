@@ -70,9 +70,12 @@ module ApplicationHelper
     end
 
     def status_select_just_in
-        [
-            ['Just In','just_in']
-        ]
+        result = []
+        lead_statuses = Lead.statuses
+        lead_statuses.each do |k,v|
+            result << [capitalize(k),k] unless k == "completed"
+        end
+        result
     end
 
     def status_background(lead)
