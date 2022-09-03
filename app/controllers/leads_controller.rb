@@ -24,6 +24,7 @@ class LeadsController < ApplicationController
         if params["query"].present?
             @leads = @leads.joins(:customer).where("customers.name ILIKE ? OR customers.company_name ILIKE ? OR item_type ILIKE ?","%#{params["query"]}%","%#{params["query"]}%","%#{params["query"]}%")
         end
+        @leads_count = @leads.count
     end
 
     def new

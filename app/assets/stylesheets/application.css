@@ -403,8 +403,8 @@
   border-radius: 20px;
   margin: 15px;
 }
-.filter-buttons{
-  margin: 30px 0px;
+.filter-buttons-space{
+  margin-top: 30px;
 }
 .filter-buttons button{
   border: 1px solid #FFB02F;
