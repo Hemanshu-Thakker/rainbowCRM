@@ -141,4 +141,13 @@ module ApplicationHelper
         matcher = params["filter"]["filter_by_status"] == data if orange
         orange and matcher ? "bg-orange" : "" 
     end
+
+    def item_pie_chart
+        result = {}
+        items_list = Lead.item_type_list
+        items_list.each do |li|
+            result[capitalize(li)] = Lead.where('item_type ILIKE ?',"%#{capitalize(li)}%").count
+        end
+        result.reject { |k,v| v == 0 }
+    end
 end

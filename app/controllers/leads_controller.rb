@@ -67,7 +67,11 @@ class LeadsController < ApplicationController
         if params[:status].present? and Lead.statuses.include?(params[:status])
             @lead.update(status: params[:status])
         end
-        render json: {success: "Lead successfully updated"}
+        if params[:status] == "completed"
+            redirect_to root_path
+        else
+            render json: {success: "Lead successfully updated"}
+        end
     end
 
     def lead_generation

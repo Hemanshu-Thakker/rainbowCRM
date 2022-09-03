@@ -256,11 +256,10 @@
 
  .delete-button {
   padding: 10px 30px;
-  background-color: #FFB02F;
+  background-color: red;
   cursor: pointer;
   color: #4D1C0D;
   margin: 10px;
-  border: 2px solid #FFB02F;
 }
 
  .button-div{
@@ -407,7 +406,6 @@
 .filter-buttons{
   margin: 30px 0px;
 }
-
 .filter-buttons button{
   border: 1px solid #FFB02F;
   background-color: #fff;
@@ -420,4 +418,8 @@
 
 .bg-orange{
   background-color: #FFB02F!important;
+}
+
+.chart-styles-div{
+  margin: 30px 0px;
 }
