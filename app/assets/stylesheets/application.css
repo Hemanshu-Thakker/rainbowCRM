@@ -237,7 +237,7 @@
  }
 
  .edit-button {
-  padding: 10px 30px;
+  padding: 10px 00px;
   background-color: #fff;
   cursor: pointer;
   color: #4D1C0D;
@@ -403,7 +403,7 @@
   border-radius: 20px;
   margin: 15px;
 }
-.filter-buttons-space{
+.filter-buttons-space {
   margin-top: 30px;
 }
 .filter-buttons button{

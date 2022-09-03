@@ -1,3 +1,5 @@
+require 'csv'
+
 class Lead < ApplicationRecord
     belongs_to :customer
 	belongs_to :employee
@@ -73,11 +75,31 @@ class Lead < ApplicationRecord
 		]
 	end
 
-	def self.handle_index_filter(params)
+	def self.to_csv
+		attributes = %w{id created_date customer_info items quantity paper_type colour size s_no slip_no payment_details info price}
 		
+		CSV.generate(headers: true) do |csv|
+			csv << attributes
+	
+			all.find_each do |user|
+			csv << attributes.map{ |attr| user.send(attr) }
+			end
+		end
 	end
 
-	def self.handle_index_search(params)
-		
+	def created_date
+        "#{created_at.in_time_zone("Chennai").strftime("%d %b, %l:%M %p")}"
+    end
+
+	def info
+		"#{description.to_plain_text}"
+	end
+
+	def customer_info
+		"#{customer.name} #{customer.company_name} #{customer.mobile} #{customer.email}"
+	end
+
+	def items
+		JSON.parse(item_type).reject(&:blank?).join(",") rescue ""
 	end
 end

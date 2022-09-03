@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   resource :leads
   resource :customers
 
-  get '/admin_dashboard', to: 'application#dashboard'
+  get '/dashboard', to: 'application#dashboard'
   post '/leads/update/status', to: 'leads#update_status_complete', as: "lead_update_status"
   post '/lead_generation', to: 'leads#lead_generation'
+  get '/leads/generate', to: 'application#export'
 end
