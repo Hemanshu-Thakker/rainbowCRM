@@ -148,6 +148,6 @@ module ApplicationHelper
         items_list.each do |li|
             result[capitalize(li)] = Lead.where('item_type ILIKE ?',"%#{capitalize(li)}%").count
         end
-        result.reject { |k,v| v == 0 }
+        result.reject { |k,v| v == 0 }.sort_by { |k,v| v }.last(10).to_h
     end
 end
