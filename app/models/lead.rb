@@ -71,6 +71,11 @@ class Lead < ApplicationRecord
 			"Coupon",
 			"bag",
 			"Standy",
+			"Slip pad",
+			"Order form",
+			"register",
+			"books",
+			"ticket",
 			"others"
 		]
 	end
