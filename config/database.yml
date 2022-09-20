@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: rainbowCRM_production
-  username: rainbowCRM
-  password: <%= ENV['RAINBOWCRM_DATABASE_PASSWORD'] %>
+  database: rainbowCRM_development
