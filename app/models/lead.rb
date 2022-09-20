@@ -26,6 +26,9 @@ class Lead < ApplicationRecord
         where('created_at BETWEEN ? and ?',previous_month_begin,previous_month_end)
     }
 
+	after_create :set_activities
+	after_update :set_activities_for_status
+
 	def self.item_type_list 
 		[
 			"visiting_card",
@@ -107,5 +110,19 @@ class Lead < ApplicationRecord
 
 	def items
 		JSON.parse(item_type).reject(&:blank?).join(",") rescue ""
+	end
+
+	def set_activities
+		description = "Order created"
+		lead_id = self.id
+		Activity.create_new(description,lead_id)
+	end
+
+	def set_activities_for_status
+		if self.saved_changes["status"].present?
+			description = "Status updated from #{self.saved_changes["status"][0]} to #{self.saved_changes["status"][1]}"
+			lead_id = self.id
+			Activity.create_new(description,lead_id)
+		end
 	end
 end
