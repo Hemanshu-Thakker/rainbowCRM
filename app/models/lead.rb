@@ -3,7 +3,7 @@ require 'csv'
 class Lead < ApplicationRecord
     belongs_to :customer
 	belongs_to :employee
-	has_many :activities
+	has_many :activities, dependent: :delete_all
 	has_rich_text :description
 
     enum status: {
