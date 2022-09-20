@@ -121,11 +121,15 @@
         <div class="col-lg-9">
             <div class="lead-activity">
                 <div class="lead-h3 border-botto">Activity</div>
-                <% @lead.activities.each do |act| %>
-                    <div class="row">
-                        <div class="col-lg-3"><%= standard_datetime act.created_at %></div>
-                        <div class="col-lg-9"><%= act.description %></div>
-                    </div>
+                <% begin %>
+                    <% @lead.activities.each do |act| %>
+                        <div class="row">
+                            <div class="col-lg-3"><%= standard_datetime act.created_at %></div>
+                            <div class="col-lg-9"><%= act.description %></div>
+                        </div>
+                    <% end %>
+                <% rescue %>
+                    <div>Something went wrong !</div>
                 <% end %>
             </div>
         </div>
