@@ -80,6 +80,7 @@ class Lead < ApplicationRecord
 			"register",
 			"books",
 			"ticket",
+			"voucher_pad",
 			"others"
 		]
 	end
@@ -124,5 +125,9 @@ class Lead < ApplicationRecord
 			lead_id = self.id
 			Activity.create_new(description,lead_id)
 		end
+	end
+
+	def display_name
+		"RP#{self.id.to_s.rjust(6,'0')}" rescue "RP(undefined)"
 	end
 end

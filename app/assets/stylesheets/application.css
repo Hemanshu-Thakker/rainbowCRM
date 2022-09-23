@@ -141,7 +141,7 @@
 
  .index-leads-list .lead-tile .info .alignment{
   background-color: #fff;
-  padding: 20px;
+  padding: 0px 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -150,9 +150,10 @@
 
  .index-leads-list .lead-tile .status{
   padding: 20px;
-  min-height: 121px;
+  min-height: inherit;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
+  width: min-content;
  }
 
  .status-bg-default{
