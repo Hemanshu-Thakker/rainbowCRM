@@ -22,7 +22,8 @@ class LeadsController < ApplicationController
         end
 
         if params["query"].present?
-            @leads = @leads.joins(:customer).where("customers.name ILIKE ? OR customers.company_name ILIKE ? OR item_type ILIKE ?","%#{params["query"]}%","%#{params["query"]}%","%#{params["query"]}%")
+            @leads = @leads.joins(:customer).where("customers.name ILIKE ? OR customers.company_name ILIKE ? OR item_type ILIKE ? OR CAST(leads.id as VARCHAR) ILIKE ?","%#{params["query"]}%","%#{params["query"]}%","%#{params["query"]}%","%#{params["query"]}")
+            @leads = search_using_display_name(params["query"]) if params["query"].include?("RP")
         end
         @leads_count = @leads.count
     end
@@ -101,5 +102,10 @@ class LeadsController < ApplicationController
 
         def lead_params
             params.require(:lead).permit(:customer_id, :employee_id, :created_by, :description, :quantity, :paper_type, :colour, :s_no, :slip_no, :size, :payment_details, :status, :item_type => [])
+        end
+
+        def search_using_display_name(str)
+            id = str[2..-1].to_i
+            Lead.where(id: id)
         end
 end

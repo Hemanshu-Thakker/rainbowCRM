@@ -424,3 +424,10 @@
 .chart-styles-div{
   margin: 30px 0px;
 }
+
+.rp-id{
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: lightgray;
+  border-radius: 20px;
+}
