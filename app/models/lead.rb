@@ -81,6 +81,9 @@ class Lead < ApplicationRecord
 			"books",
 			"ticket",
 			"voucher_pad",
+			"registration_form",
+			"chit_cards",
+			"pass_book",
 			"others"
 		]
 	end
