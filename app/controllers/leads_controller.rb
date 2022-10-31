@@ -26,7 +26,7 @@ class LeadsController < ApplicationController
             @leads = search_using_display_name(params["query"]) if params["query"].include?("RP")
         end
         computer_employee = Employee.find_by(employee_type: "computer").id
-        @leads = @leads.where.not(employee_type: computer_employee)
+        @leads = @leads.where.not(employee_id: computer_employee)
         @leads_count = @leads.count
     end
 
