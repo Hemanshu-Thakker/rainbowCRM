@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   post '/leads/update/status', to: 'leads#update_status_complete', as: "lead_update_status"
   post '/lead_generation', to: 'leads#lead_generation'
   get '/leads/generate', to: 'application#export'
+  get '/website_leads', to: 'leads#website_leads', as: "website_leads"
 end

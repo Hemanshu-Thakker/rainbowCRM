@@ -91,6 +91,12 @@ class LeadsController < ApplicationController
         end
     end
 
+    def website_leads
+        employee_id = Employee.find_by(employee_type: "computer")
+        @leads = Lead.order(created_at: :desc).where(employee_id: employee_id)
+        render 'index'
+    end
+
     private
         def htmlIZE(str)
             "<div>"+str+"</div>"
