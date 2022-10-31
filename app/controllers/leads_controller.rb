@@ -79,7 +79,7 @@ class LeadsController < ApplicationController
     def lead_generation
         @customer = Customer.new(customer_api_params)
         if @customer.save
-            @employee = Employee.find_by(employee_type: "computer")
+            @employee = Employee.find_by(employee_type: "computer", name: "Automation")
             @lead = Lead.new(customer_id: @customer.id, description: htmlIZE(params[:description]), employee_id: @employee.id, created_by: @employee.id, status: 'just_in')
             if @lead.save
                 render json: {success: "Lead successfully created"}
@@ -97,6 +97,7 @@ class LeadsController < ApplicationController
         end
 
         def customer_api_params
+            params.permit(:description)
             params.permit(:name,:mobile,:email)
         end
 
