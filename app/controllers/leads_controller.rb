@@ -25,6 +25,8 @@ class LeadsController < ApplicationController
             @leads = @leads.joins(:customer).where("customers.name ILIKE ? OR customers.company_name ILIKE ? OR item_type ILIKE ? OR CAST(leads.id as VARCHAR) ILIKE ?","%#{params["query"]}%","%#{params["query"]}%","%#{params["query"]}%","%#{params["query"]}")
             @leads = search_using_display_name(params["query"]) if params["query"].include?("RP")
         end
+        computer_employee = Employee.find_by(employee_type: "computer").id
+        @leads = @leads.where.not(employee_type: computer_employee)
         @leads_count = @leads.count
     end
 
@@ -77,7 +79,7 @@ class LeadsController < ApplicationController
     end
 
     def lead_generation
-        @customer = Customer.new(customer_api_params)
+        @customer = Customer.find_or_create_by(customer_api_params)
         if @customer.save
             @employee = Employee.find_by(employee_type: "computer", name: "Automation")
             @lead = Lead.new(customer_id: @customer.id, description: htmlIZE(params[:description]), employee_id: @employee.id, created_by: @employee.id, status: 'just_in')
@@ -92,8 +94,9 @@ class LeadsController < ApplicationController
     end
 
     def website_leads
-        employee_id = Employee.find_by(employee_type: "computer")
+        employee_id = Employee.find_by(employee_type: "computer").id
         @leads = Lead.order(created_at: :desc).where(employee_id: employee_id)
+        @leads_count = @leads.count
         render 'index'
     end
 
