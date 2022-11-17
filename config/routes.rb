@@ -9,4 +9,10 @@ Rails.application.routes.draw do
   post '/lead_generation', to: 'leads#lead_generation'
   get '/leads/generate', to: 'application#export'
   get '/website_leads', to: 'leads#website_leads', as: "website_leads"
+  post '/update/assigned_to', to: 'leads#update_assigned_to', as: "update_assigned_to"
+
+  # authentication
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  post '/logout', to: 'sessions#destroy'
 end

@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    
+    before_action :require_login
     def dashboard
         @new_customers = Customer.last_month
         @orders = Lead.last_month
@@ -14,8 +14,16 @@ class ApplicationController < ActionController::Base
         end
     end
 
+    def current_employee
+        @current_employee ||= Employee.find_by(id: session[:employee_id]) if session[:employee_id]
+    end
+
     private
     def last_month
         (Time.now - 1.month).strftime("%B %Y")
+    end
+
+    def require_login
+        redirect_to '/login' unless current_employee.present?
     end
 end

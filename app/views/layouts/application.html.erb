@@ -43,13 +43,17 @@
       <div class="main-inner">
         <!-- navbar -->
         <nav>
-          <form class="form-style" action="<%= root_path %>">
-            <input class="form-control" type="search" name="query" value="<%= params[:query] %>" placeholder="Search" aria-label="Search">
-            <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
-          <div class="profile-info">
-            <span><%= image_tag "avatar.png" %></span>
-          </div>
+          <% if @current_employee.present? %>
+            <form class="form-style" action="<%= root_path %>">
+              <input class="form-control" type="search" name="query" value="<%= params[:query] %>" placeholder="Search" aria-label="Search">
+              <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <div class="profile-info">
+              <%= link_to '/logout', method: :post, :data => {:confirm => 'Are you sure?'} do %>
+                <%= image_tag "shutdown.png" %>
+              <% end %>
+            </div>
+          <% end %>
         </nav>
 
         <!-- Main content -->
@@ -109,10 +113,18 @@
         $('.status-icons-div').css('display','flex');
       });
 
+      $('#assigned-to-update').on('change', function(){
+        $('.assigned-to-icons-div').css('display','flex');
+      });
+
       $('.lead-status-style .bootstrap-close-icon').on('click', function(){
         var data = $('.lead-status-style').data('current_lead');
         $('.status-icons-div').css('display','none');
         $('#show-status-update').val(data);
+      });
+
+      $('.assigned-to-close-icon').on('click', function(){
+        $('.assigned-to-icons-div').css('display','none');
       });
 
       $('.lead-status-style .bootstrap-check-icon').on('click', function(){

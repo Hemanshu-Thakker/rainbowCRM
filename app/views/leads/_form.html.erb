@@ -30,10 +30,11 @@
                 <%= form.text_field :quantity, class: 'form-control lead-form-input-style' %>
             </div>
 
-            <div class='lead-form-input'>
-                <%= form.label :created_by, "Created By" %>
-                <%= form.select :created_by, employee_select(true), {}, {class: 'form-control lead-form-input-style'} %>
-            </div>
+            <!-- <div class='lead-form-input'>
+                <%#= form.label :created_by, "Created By" %>
+                <%#= form.select :created_by, employee_select(true), {}, {class: 'form-control lead-form-input-style'} %>
+            </div> -->
+            <%= hidden_field_tag :"lead[created_by]", current_employee_id %>
 
             <div class='lead-form-input'>
                 <%= form.label :employee, "Assign To" %>
@@ -44,13 +45,13 @@
                 <%= form.label :status, "Status" %>
                 <%= form.select :status, status_select_just_in, {}, {class: 'form-control lead-form-input-style'} %>
             </div>
-        </div>
-        <div class="col-lg-6">
+
             <div class='lead-form-input'>
                 <%= form.label :paper_type, "Paper Type" %>
                 <%= form.text_field :paper_type, class: 'form-control lead-form-input-style' %>
             </div>
-
+        </div>
+        <div class="col-lg-6">
             <div class='lead-form-input'>
                 <%= form.label :colour, "Colour" %>
                 <%= form.text_field :colour, class: 'form-control lead-form-input-style' %>

@@ -106,6 +106,10 @@ module ApplicationHelper
         lead.status
     end
 
+    def current_employee_id
+        @current_employee&.id
+    end
+
     def build_params(data,url_params)
         params = filter_params_to_hash(url_params)
         if data.present?

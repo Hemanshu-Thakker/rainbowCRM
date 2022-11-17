@@ -1,0 +1,11 @@
+<div class="p-3"><h3>You need to login before moving further</h3>
+<p>Check whatsapp rainbow group for email and password. Contact admin for more information</p>
+<div class="form-box">
+    <form action="/login" method="post">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <input type="text" name="email" placeholder="Email ID" class="form-control m-2" required>
+        <input type="text" name="password" placeholder="Password" class="form-control m-2" required>
+        <input type="submit" style="background-color: #FFB02F;" class="form-control m-2">
+    </form>
+</div>
+</div>

@@ -84,10 +84,11 @@
 
  .profile-info img{
   width: 40px;
+  cursor: pointer;
  }
 
  .profile-info span{
-  padding-left: 20px;
+  padding-right: 20px;
  }
 
  .main-content{
@@ -382,7 +383,20 @@
   border-radius: 0px!important;
 }
 
+.assign_to-style select{
+  width: -webkit-fill-available;
+  margin: 10px;
+  border: 2px solid #FFB02F;
+  border-radius: 0px!important;
+}
+
 .status-icons-div{
+  display: none;
+  justify-content: flex-end;
+  margin-right: 10px;
+}
+
+.assigned-to-icons-div{
   display: none;
   justify-content: flex-end;
   margin-right: 10px;
@@ -457,4 +471,8 @@
   background-color: #FFB02F;
   padding: 9px 0.75rem;
   border-radius: 0.25rem;
+}
+
+.form-box{
+  width: 280px;
 }

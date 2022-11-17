@@ -64,6 +64,13 @@ class LeadsController < ApplicationController
         end
     end
 
+    def update_assigned_to
+        @lead = Lead.find_by(id: params[:id]) rescue nil
+        updated_assigned_to_id = params[:employee_id]
+        @lead.update(employee_id: updated_assigned_to_id)
+        redirect_to leads_path(id: @lead)
+    end
+
     def destroy
         @lead = Lead.find_by(id: params[:id])
         @lead.destroy
