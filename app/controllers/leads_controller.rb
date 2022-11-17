@@ -1,7 +1,7 @@
 class LeadsController < ApplicationController
     skip_before_action :verify_authenticity_token, only: [:lead_generation]
     def index
-        @leads = Lead.order(updated_at: :desc).where.not(status: "completed")   
+        @leads = Lead.order(created_at: :desc).where.not(status: ["completed","payment_pending","ready_for_delivery"])   
         if params["filter"].present?
             begin
                 employee_name = params["filter"]["assigned_to"] rescue false
