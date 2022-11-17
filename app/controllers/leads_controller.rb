@@ -1,12 +1,13 @@
 class LeadsController < ApplicationController
     skip_before_action :verify_authenticity_token, only: [:lead_generation]
     def index
-        @leads = Lead.order(updated_at: :desc).where.not(status: "completed")
+        @leads = Lead.order(updated_at: :desc).where.not(status: "completed")   
         if params["filter"].present?
             begin
                 employee_name = params["filter"]["assigned_to"] rescue false
                 lead_status = params["filter"]["filter_by_status"] rescue false
                 priority = params["filter"]["priority"] rescue false
+                filtered_date = params["filter"]["by_date"] rescue false
                 if employee_name.present?
                     employee = Employee.where('lower(name) = ?',employee_name).first
                     @leads = @leads.where(employee_id: employee.id)
@@ -16,6 +17,9 @@ class LeadsController < ApplicationController
                 end
                 if priority.present?
                     @leads
+                end
+                if filtered_date.present?
+                    @leads = @leads.where(created_at: filtered_date.to_date.beginning_of_day..filtered_date.to_date.end_of_day)
                 end
             rescue
             end

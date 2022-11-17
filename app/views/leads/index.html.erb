@@ -1,57 +1,70 @@
 <div class="index-leads">
     <div class="">
-        <div class="filter-flex">
-            <div>
-                <a class="" href="#" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                    <%= image_tag "filter.png" %>
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li>
-                        <% data =  "assigned_to:mahesh" %>
-                        <a class="dropdown-item" href="<%= root_path(build_params(data,params.to_unsafe_h)) %>">Assigned To: Mahesh</a>
-                    </li>
-                    <li>
-                        <% data = "assigned_to:shankar" %>
-                        <a class="dropdown-item" href="<%= root_path(build_params(data,params.to_unsafe_h)) %>">Assigned To: Shankar</a>
-                    </li>
-                    <li id="shankar-filter">
-                        <% data = "assigned_to:nancy" %>
-                        <a class="dropdown-item" href="<%= root_path(build_params(data,params.to_unsafe_h)) %>">Assigned To: Nancy</a>
-                    </li>
-                    <!-- <li><hr class="dropdown-divider"></li>
-                    <li>
-                        <% data = "filter_by_status:just_in" %>
-                        <a class="dropdown-item" href="<%= root_path(build_params(data,params.to_unsafe_h)) %>">Filter by: Just In</a></li>
-                    <li>
-                    <li>
-                        <% data = "filter_by_status:designing" %>
-                        <a class="dropdown-item" href="<%= root_path(build_params(data,params.to_unsafe_h)) %>">Filter by: Designing</a></li>
-                    <li>
-                        <% data = "filter_by_status:printing" %>
-                        <a class="dropdown-item" href="<%= root_path(build_params(data,params.to_unsafe_h)) %>">Filter by: Printing</a></li>
-                    <li>
-                        <% data = "filter_by_status:binding" %>
-                        <a class="dropdown-item" href="<%= root_path(build_params(data,params.to_unsafe_h)) %>">Filter by: Binding</a></li>
-                    <li>
-                        <% data = "filter_by_status:post_press" %>
-                        <a class="dropdown-item" href="<%= root_path(build_params(data,params.to_unsafe_h)) %>">Filter by: Post press</a>
-                    </li> -->
-                    <li><hr class="dropdown-divider"></li>
-                    <li>
-                        <% data = "priority:high" %>
-                        <a class="dropdown-item" href="<%= root_path(build_params(data,params.to_unsafe_h)) %>">Priority: High</a>
-                    </li>
-                </ul>
-            </div>
-            <% if params["filter"].present? %>
-                <% params["filter"].each do |key,value| %> 
-                    <div class="filter-button">
-                        <span><%= capitalize(key) %> : <%= capitalize(value) %></span>
-                        <% data = key %>
-                        <span class="close-filter"><a href="<%= root_path(remove_params(data,params.to_unsafe_h)) %>">&times;</a></span>
-                    </div>
+        <div class="filter-flex-justify-between">
+            <div class="filter-flex">
+                <div>
+                    <a class="" href="#" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <%= image_tag "filter.png" %>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li>
+                            <% data =  "assigned_to:mahesh" %>
+                            <a class="dropdown-item" href="<%= root_path(build_params(data,params.to_unsafe_h)) %>">Assigned To: Mahesh</a>
+                        </li>
+                        <li>
+                            <% data = "assigned_to:shankar" %>
+                            <a class="dropdown-item" href="<%= root_path(build_params(data,params.to_unsafe_h)) %>">Assigned To: Shankar</a>
+                        </li>
+                        <li id="shankar-filter">
+                            <% data = "assigned_to:nancy" %>
+                            <a class="dropdown-item" href="<%= root_path(build_params(data,params.to_unsafe_h)) %>">Assigned To: Nancy</a>
+                        </li>
+                        <!-- <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <% data = "filter_by_status:just_in" %>
+                            <a class="dropdown-item" href="<%= root_path(build_params(data,params.to_unsafe_h)) %>">Filter by: Just In</a></li>
+                        <li>
+                        <li>
+                            <% data = "filter_by_status:designing" %>
+                            <a class="dropdown-item" href="<%= root_path(build_params(data,params.to_unsafe_h)) %>">Filter by: Designing</a></li>
+                        <li>
+                            <% data = "filter_by_status:printing" %>
+                            <a class="dropdown-item" href="<%= root_path(build_params(data,params.to_unsafe_h)) %>">Filter by: Printing</a></li>
+                        <li>
+                            <% data = "filter_by_status:binding" %>
+                            <a class="dropdown-item" href="<%= root_path(build_params(data,params.to_unsafe_h)) %>">Filter by: Binding</a></li>
+                        <li>
+                            <% data = "filter_by_status:post_press" %>
+                            <a class="dropdown-item" href="<%= root_path(build_params(data,params.to_unsafe_h)) %>">Filter by: Post press</a>
+                        </li> -->
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <% data = "priority:high" %>
+                            <a class="dropdown-item" href="<%= root_path(build_params(data,params.to_unsafe_h)) %>">Priority: High</a>
+                        </li>
+                    </ul>
+                </div>
+                <% if params["filter"].present? %>
+                    <% params["filter"].each do |key,value| %> 
+                        <div class="filter-button">
+                            <span><%= capitalize(key) %> : <%= capitalize(value) %></span>
+                            <% data = key %>
+                            <span class="close-filter"><a href="<%= root_path(remove_params(data,params.to_unsafe_h)) %>">&times;</a></span>
+                        </div>
+                    <% end %>
                 <% end %>
-            <% end %>
+            </div>
+            <div class="date-icon-class">
+                <span class="calendar-link" id="calendar-icon-toggle">
+                    <%= image_tag "calendar.png" %>
+                </span>
+                <span id="date-picker-flow">
+                    <form action="<%= root_path(params.to_unsafe_h) %>">
+                        <input type="date" class="form-control-custom" id="date-filter" name="[filter][by_date]">
+                        <input type="submit" class="form-control-custom">
+                    </form>
+                </span>
+            </div>
         </div>
         <div class="flexer-space-between filter-buttons-space">
             <div class="filter-buttons">
