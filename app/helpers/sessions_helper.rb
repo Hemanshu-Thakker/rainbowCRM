@@ -5,6 +5,6 @@ module SessionsHelper
 
 	def log_out
 		session.delete(:employee_id)
-    	@current_user = nil
+    	@current_employee = nil
 	end
 end
