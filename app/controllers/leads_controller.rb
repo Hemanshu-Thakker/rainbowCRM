@@ -1,7 +1,8 @@
 class LeadsController < ApplicationController
     skip_before_action :verify_authenticity_token, only: [:lead_generation]
     def index
-        @leads = Lead.order(created_at: :desc).where.not(status: ["completed","payment_pending","ready_for_delivery"])   
+        piyush_logic_status = params["filter"].present? ? ["completed"] : ["completed","payment_pending","ready_for_delivery"]
+        @leads = Lead.order(created_at: :desc).where.not(status: piyush_logic_status)   
         if params["filter"].present?
             begin
                 employee_name = params["filter"]["assigned_to"] rescue false
@@ -9,7 +10,7 @@ class LeadsController < ApplicationController
                 priority = params["filter"]["priority"] rescue false
                 filtered_date = params["filter"]["by_date"] rescue false
                 if employee_name.present?
-                    employee = Employee.where('lower(name) = ?',employee_name).first
+                    employee = (employee_name == "me") ? Employee.find_by(id: @current_employee.id) : Employee.where('lower(name) = ?',employee_name).first
                     @leads = @leads.where(employee_id: employee.id)
                 end
                 if lead_status.present?

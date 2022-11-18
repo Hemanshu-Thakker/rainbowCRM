@@ -29,7 +29,7 @@ class Lead < ApplicationRecord
 	after_create :set_activities
 	after_update :set_activities_for_status
 
-	def self.item_type_list 
+	def self.item_type_list
 		[
 			"visiting_card",
 			"poster",
