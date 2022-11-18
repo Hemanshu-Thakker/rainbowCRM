@@ -77,37 +77,49 @@
           minimumInputLength: -1, 
       });
       $('#popup-customer-submit').on('click', function(){
-    var form = $("#cusomer-form-id");
-    var data = {"customer": {}}
-    $.each(form.serializeArray(), function(i, field) {
-        data["customer"][field.name] = field.value;
-    });
-    data["customer"]["remote"] = true;
-    $('#customer-close').click();
-    if (true) {
-      $.ajax({
-        url: "/customers",
-        type: "POST",
-        beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
-        data: data,
-        success: function(data){
-            console.log(data);
-            var option = {
-              id: data.id,
-              name: data.name + '-' + data.company_name,
+        var form = $("#cusomer-form-id");
+        var data = {"customer": {}}
+        $.each(form.serializeArray(), function(i, field) {
+            data["customer"][field.name] = field.value;
+        });
+        data["customer"]["remote"] = true;
+        $('#customer-close').click();
+        if (true) {
+          $.ajax({
+            url: "/customers",
+            type: "POST",
+            beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            data: data,
+            success: function(data){
+                console.log(data);
+                var option = {
+                  id: data.id,
+                  name: data.name + '-' + data.company_name,
+                }
+                var newOption = new Option(option.name, option.id, true, true);
+                $('#customer_select_2').append(newOption).trigger('change');
+            },
+            error: function(){
+              console.log("AJAX call unsuccesful");
             }
-            var newOption = new Option(option.name, option.id, true, true);
-            $('#customer_select_2').append(newOption).trigger('change');
-        },
-        error: function(){
-          console.log("AJAX call unsuccesful");
+          });
+        }
+        else{
+          alert("The form has errors, couldn't be submitted");
         }
       });
-    }
-    else{
-      alert("The form has errors, couldn't be submitted");
-    }
-});
+
+      $('#popup-new-item-submit').on('click', function(){
+        var new_item = $("#new_item_string").val();
+        $('#item-close').click();
+        $("#new_item_string").val('');
+        var option = {
+          id: new_item,
+          name: new_item,
+        }
+        var newOption = new Option(option.name, option.id, true, true);
+        $('#item_select_2').append(newOption).trigger('change');
+      });
 
       $('#show-status-update').on('change', function(){
         $('.status-icons-div').css('display','flex');

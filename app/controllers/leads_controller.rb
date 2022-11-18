@@ -1,7 +1,7 @@
 class LeadsController < ApplicationController
     skip_before_action :verify_authenticity_token, only: [:lead_generation]
     def index
-        piyush_logic_status = params["filter"].present? ? ["completed"] : ["completed","payment_pending","ready_for_delivery"]
+        piyush_logic_status = params["filter"]["filter_by_status"].present? ? ["completed"] : ["completed","payment_pending","ready_for_delivery"]
         @leads = Lead.order(created_at: :desc).where.not(status: piyush_logic_status)   
         if params["filter"].present?
             begin

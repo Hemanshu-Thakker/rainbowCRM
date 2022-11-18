@@ -21,7 +21,12 @@
             </div>
 
             <div class='lead-form-input'>
-                <div>Item</div>
+                <div class="flexer">
+                    <div class="margin-right-auto">Items</div>
+                    <div class="padding-left-1 text-primary add-new-position" data-bs-toggle="modal" data-bs-target="#itemFormModal">
+                        Add New
+                    </div>
+                </div>
                 <%= form.select :item_type, options_for_select(item_select_options,item_select_value(@lead)), {}, {id: 'item_select_2',class: 'form-control lead-form-input-style', multiple: true, required: true   } %>
             </div>
 
@@ -30,10 +35,6 @@
                 <%= form.text_field :quantity, class: 'form-control lead-form-input-style' %>
             </div>
 
-            <!-- <div class='lead-form-input'>
-                <%#= form.label :created_by, "Created By" %>
-                <%#= form.select :created_by, employee_select(true), {}, {class: 'form-control lead-form-input-style'} %>
-            </div> -->
             <%= hidden_field_tag :"lead[created_by]", current_employee_id %>
 
             <div class='lead-form-input'>
@@ -84,9 +85,9 @@
         <%= form.rich_text_area :description, class: 'form-control ' %>
     </div>
 
-    <div class='lead-form-input' style="text-align: right;">
-        <span class="edit-button"><a href="<%= root_path %>">Cancel</a></span>
-        <%= form.submit "Submit", class: 'edit_button' %>
+    <div class='lead-form-input' style="text-align: right;padding-top: 20px;">
+        <span class="btn btn-warning"><a href="<%= root_path %>">Cancel</a></span>
+        <%= form.submit "Submit", class: 'btn btn-success' %>
     </div>
 
 <% end %>
@@ -103,7 +104,25 @@
         </div>
         <div class="modal-footer">
             <span class="edit-button cursor-pointer" id="customer-close" data-bs-dismiss="modal">Close</span>
-            <button type="button" class="btn btn-warning" id="popup-customer-submit">Save Order</button>
+            <button type="button" class="btn btn-warning" id="popup-customer-submit">Save</button>
+        </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="itemFormModal" tabindex="-1" aria-labelledby="itemForm" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="customerFormModalLabel">New Item</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <input type="text" name="new_item" id="new_item_string" placeholder="New Item" class="form-control">
+        </div>
+        <div class="modal-footer">
+            <span class="btn btn-warning cursor-pointer" id="item-close" data-bs-dismiss="modal">Close</span>
+            <button type="button" class="btn btn-success" id="popup-new-item-submit">Save</button>
         </div>
         </div>
     </div>
