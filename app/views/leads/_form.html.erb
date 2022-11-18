@@ -32,7 +32,7 @@
 
             <div class='lead-form-input'>
                 <%= form.label :quantity, "Quantity" %>
-                <%= form.text_field :quantity, class: 'form-control lead-form-input-style' %>
+                <%= form.text_area :quantity, class: 'form-control lead-form-input-style' %>
             </div>
 
             <%= hidden_field_tag :"lead[created_by]", current_employee_id %>
@@ -49,18 +49,18 @@
 
             <div class='lead-form-input'>
                 <%= form.label :paper_type, "Paper Type" %>
-                <%= form.text_field :paper_type, class: 'form-control lead-form-input-style' %>
+                <%= form.text_area :paper_type, class: 'form-control lead-form-input-style' %>
             </div>
         </div>
         <div class="col-lg-6">
             <div class='lead-form-input'>
                 <%= form.label :colour, "Colour" %>
-                <%= form.text_field :colour, class: 'form-control lead-form-input-style' %>
+                <%= form.text_area :colour, class: 'form-control lead-form-input-style' %>
             </div>
 
             <div class='lead-form-input'>
                 <%= form.label :size, "Size" %>
-                <%= form.text_field :size, class: 'form-control lead-form-input-style' %>
+                <%= form.text_area :size, class: 'form-control lead-form-input-style' %>
             </div>
 
             <div class='lead-form-input'>
