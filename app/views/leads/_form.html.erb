@@ -27,7 +27,7 @@
                         Add New
                     </div>
                 </div>
-                <%= form.select :item_type, options_for_select(item_select_options,item_select_value(@lead)), {}, {id: 'item_select_2',class: 'form-control lead-form-input-style', multiple: true, required: true   } %>
+                <%= form.select :item_type, options_for_select(item_select_options(@lead),item_select_value(@lead)), {}, {id: 'item_select_2',class: 'form-control lead-form-input-style', multiple: true, required: true   } %>
             </div>
 
             <div class='lead-form-input'>

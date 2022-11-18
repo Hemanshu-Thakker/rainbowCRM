@@ -13,14 +13,18 @@ module ApplicationHelper
         result
     end
     
-    def item_select_options
+    def item_select_options(lead)
         items_list = Lead.item_type_list
         result = []
         items_list.each do |item,index|
             new_item = capitalize(item)
             result << [new_item, new_item]
         end
-        result
+        item_select_value(lead).each do |item|
+            next unless item.present?
+            result << [item, item]
+        end
+        result.uniq
     end
 
     def item_select_value(lead)
