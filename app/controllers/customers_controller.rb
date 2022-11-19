@@ -1,6 +1,11 @@
 class CustomersController < ApplicationController
     def index
-        @customers = Customer.last(10)
+        @customer = nil
+    end
+
+    def fetch_customer
+        @customer = Customer.find_by(id: params[:customer_id])
+        render 'index'
     end
 
     def new

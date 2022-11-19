@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   post '/update/assigned_to', to: 'leads#update_assigned_to', as: "update_assigned_to"
   get 'search/tickets', to: 'leads#find'
   post 'search/tickets', to: 'leads#find_filter'
+  get 'customers/index', to: 'customers#index'
+  post 'customers/fetch', to: 'customers#fetch_customer'
 
   # authentication
   get '/login', to: 'sessions#new'

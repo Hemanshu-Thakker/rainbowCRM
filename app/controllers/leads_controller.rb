@@ -135,6 +135,7 @@ class LeadsController < ApplicationController
         unless @leads.present?
             flash[:error] = "No records available"
         end
+        flash[:error] = "No records available"
         render 'find'
     end
 

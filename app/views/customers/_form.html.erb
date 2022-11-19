@@ -42,8 +42,8 @@
 
     <% unless popup %>
         <div class='lead-form-input' style="text-align: right;">
-            <span class="edit-button"><a href="<%= root_path %>">Cancel</a></span>
-            <%= form.submit "Submit", class: 'edit_button' %>
+            <span class="btn btn-warning"><a href="/customers/index">Cancel</a></span>
+            <%= form.submit "Submit", class: 'btn btn-success' %>
         </div>
     <% end %>
 <% end %>
