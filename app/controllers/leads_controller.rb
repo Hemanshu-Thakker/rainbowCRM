@@ -112,6 +112,32 @@ class LeadsController < ApplicationController
         render 'index'
     end
 
+    def find
+        @leads = []
+    end
+
+    def find_filter
+        customer_id = params[:customer_id]
+        leads_display_number = params[:lead_id]
+        search_term = params[:search]
+        @leads = []
+        if customer_id.present?
+            selected_customer = Customer.find_by(id: customer_id)
+            @leads = selected_customer.leads
+        end
+        if leads_display_number.present?
+            @leads = search_using_display_name(leads_display_number) if leads_display_number.include?("RP")
+            @leads = Lead.where(status: "completed").joins(:customer).where("customers.name ILIKE ? OR customers.company_name ILIKE ? OR item_type ILIKE ? OR CAST(leads.id as VARCHAR) ILIKE ?","%#{leads_display_number}%","%#{leads_display_number}%","%#{leads_display_number}%","%#{leads_display_number}") unless leads_display_number.include?("RP")
+        end
+        if search_term.present?
+            @leads = Lead.where(status: "completed").joins(:customer).where("customers.name ILIKE ? OR customers.company_name ILIKE ? OR item_type ILIKE ? OR CAST(leads.id as VARCHAR) ILIKE ?","%#{search_term}%","%#{search_term}%","%#{search_term}%","%#{search_term}")
+        end
+        unless @leads.present?
+            flash[:error] = "No records available"
+        end
+        render 'find'
+    end
+
     private
         def htmlIZE(str)
             "<div>"+str+"</div>"

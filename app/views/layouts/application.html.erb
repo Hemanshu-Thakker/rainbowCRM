@@ -33,6 +33,9 @@
           <li><a href="<%= new_leads_path %>">
             <span><%= image_tag "insights.png" %></span>Create Order
           </a></li>
+          <li><a href="/search/tickets">
+            <span><%= image_tag "overview.png" %></span>Search Record
+          </a></li>
           <li><a href="/dashboard">
             <span><%= image_tag "overview.png" %></span>Dashboard
           </a></li>
@@ -68,6 +71,11 @@
     <script>
       $('#customer_select_2').select2({
           width: "80%",
+          placeholder: 'Search for customer',
+          minimumInputLength: -1
+      });
+      $('#customer_select_2_2').select2({
+          width: "250px",
           placeholder: 'Search for customer',
           minimumInputLength: -1
       });

@@ -38,7 +38,7 @@ module ApplicationHelper
 
     def customer_select
         customers_list = Customer.all
-        result = []
+        result = [['','']]
         customers_list.each do |customer|
             result << [displayName(customer),customer.id]
         end

@@ -1,0 +1,21 @@
+<div class="index-leads">
+    <h4>Apply filters</h4>
+    <div class="flexer-space-between">        
+        <div>
+            <%= form_with url: '/search/tickets' do |f| %>
+                <%= f.select :customer_id, customer_select, {}, {id: 'customer_select_2_2', class: ''} %>&nbsp;OR&nbsp;
+                <input type="text" placeholder="RPXXXXXX" name="lead_id" class="form-control-custom small-input-box">&nbsp;OR&nbsp;
+                <input type="text" placeholder="Search Key" name="search" class="form-control-custom small-input-box">
+                <button type="submit" class="btn-warning form-control-custom">Apply</button>
+            <% end %>
+        </div>
+        <div class="lead-dull">
+            <%= @leads.count %> tickets displayed
+        </div>
+    </div>
+    <div class="">
+        <div class="record-tile">
+            <%= render "leads/completed_leads", leads: @leads %>
+        </div>
+    </div>
+</div>
