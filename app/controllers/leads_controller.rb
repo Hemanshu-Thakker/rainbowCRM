@@ -84,7 +84,8 @@ class LeadsController < ApplicationController
             @lead.update(status: params[:status])
         end
         if params[:status] == "completed"
-            redirect_to root_path
+            root_params = params[:root_params].to_unsafe_h.except(:action, :controller)
+            redirect_to root_path(root_params)
         else
             render json: {success: "Lead successfully updated"}
         end

@@ -505,3 +505,17 @@
 .small-input-box{
   width: 250px;
 }
+
+.completed-short-cut span{
+  background-color: #1a8754;
+  position: relative;
+  right: 150px;
+  top: -30px;
+  padding: 3px;
+  color: #fff;
+  cursor: grabbing;
+}
+
+.completed-short-cut {
+  text-align: right;
+}
