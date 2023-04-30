@@ -14,6 +14,9 @@ class ApplicationController < ActionController::Base
         end
     end
 
+    def work_index
+    end
+
     def current_employee
         @current_employee ||= Employee.find_by(id: session[:employee_id]) if session[:employee_id]
     end
