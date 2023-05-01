@@ -100,6 +100,7 @@ class LeadsController < ApplicationController
             @employee = Employee.find_by(employee_type: "computer", name: "Automation")
             @lead = Lead.new(customer_id: @customer.id, description: htmlIZE(params[:description]), employee_id: @employee.id, created_by: @employee.id, status: 'just_in')
             if @lead.save
+                LeadMailer.with(customer: @customer).confirmation_mail.deliver_now
                 render json: {success: "Lead successfully created"}
             else
                 render json: {error: "Lead creation issue"}
