@@ -42,7 +42,7 @@
           <li><a href="/dashboard">
             <span><%= image_tag "overview.png" %></span>Dashboard
           </a></li>
-          <% if @current_employee&.name == "Hemanshu" %>
+          <% if @current_employee&.name&.downcase == "hemanshu" %>
             <li><a href="/work/index">
               <span><%= image_tag "overview.png" %></span>Work Index
             </a></li>
