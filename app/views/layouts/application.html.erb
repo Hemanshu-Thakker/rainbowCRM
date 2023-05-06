@@ -28,7 +28,7 @@
             </div>
           </a></li>
           <li><a href="<%= website_leads_path %>">
-            <span><%= image_tag "overview.png" %></span>Website Leads
+            <span><%= image_tag "overview.png" %></span>Website Leads<span class="badge" style="background: white;color: maroon;margin-left: 5px"><%= website_orders_count %></span>
           </a></li>
           <li><a href="<%= new_leads_path %>">
             <span><%= image_tag "insights.png" %></span>Create Order
@@ -42,7 +42,7 @@
           <li><a href="/dashboard">
             <span><%= image_tag "overview.png" %></span>Dashboard
           </a></li>
-          <% if @current_employee&.name&.downcase == "hemanshu" %>
+          <% if @current_employee&.email == "hemanshu@rainbow.com" %>
             <li><a href="/work/index">
               <span><%= image_tag "overview.png" %></span>Work Index
             </a></li>

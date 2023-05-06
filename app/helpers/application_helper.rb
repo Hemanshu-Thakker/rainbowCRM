@@ -73,6 +73,11 @@ module ApplicationHelper
         Customer.new
     end
 
+    def website_orders_count
+        automation_employee = Employee.find_by(name: "Automation")
+        Lead.where(employee_id: automation_employee).count
+    end
+
     def status_select_just_in
         result = []
         lead_statuses = Lead.statuses

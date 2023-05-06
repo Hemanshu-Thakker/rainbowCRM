@@ -100,6 +100,10 @@ class Lead < ApplicationRecord
 		end
 	end
 
+	def creator
+		Employee.find_by(id: self.created_by)
+	end
+
 	def created_date
         "#{created_at.in_time_zone("Chennai").strftime("%d %b, %l:%M %p")}"
     end
