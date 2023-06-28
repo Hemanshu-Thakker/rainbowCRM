@@ -14,6 +14,14 @@ class ApplicationController < ActionController::Base
         end
     end
 
+    def export_customer_data
+        @records = Lead.all
+        
+        respond_to do |format|
+            format.csv { send_data @records.to_csv, filename: "customer-data.csv" }
+        end
+    end
+
     def work_index
     end
 

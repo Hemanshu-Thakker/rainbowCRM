@@ -89,7 +89,7 @@ class Lead < ApplicationRecord
 	end
 
 	def self.to_csv
-		attributes = %w{id created_date customer_info items quantity paper_type colour size s_no slip_no payment_details info price}
+		attributes = %w{id customer_info items info}
 		
 		CSV.generate(headers: true) do |csv|
 			csv << attributes

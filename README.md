@@ -1,24 +1,16 @@
-# README
+Deployment Notes
+1. To initiate the deployment 
+    a. push code to master
+    b. run command 'cap production deploy'
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Access AWS from terminal
+1. Execute 'ssh -i "urban-key.pem" adminman@ec2-3-110-118-27.ap-south-1.compute.amazonaws.com'
+2. Enter password #E20****
+3. 
 
-Things you may want to cover:
+Troubleshoot
+1. git@github.com: Permission denied (publickey). 
+    Make sure you have the correct access rights and the repository exists
+    Resource: https://capistranorb.com/documentation/getting-started/authentication-and-authorisation/
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+    Solution: Execute 'ssh-add' in local machine and 'ssh-add' in remote machine
