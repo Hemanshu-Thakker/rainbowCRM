@@ -50,6 +50,14 @@ class CustomersController < ApplicationController
         redirect_to '/admin_dashboard'
     end
 
+    def export_customer_order_data
+        @records = Customer.all
+        
+        respond_to do |format|
+            format.csv { send_data @records.to_csv, filename: "customer-data-new.csv" }
+        end
+    end
+
     private
     def customer_params
         params.require(:customer).permit(:name, :company_name, :mobile, :email, :note)
