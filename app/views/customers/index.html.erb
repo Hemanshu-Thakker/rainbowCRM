@@ -1,24 +1,25 @@
 <div class="customer-index">
-    <%= form_with url: '/customers/fetch' do |form| %>
-        <%= form.select :customer_id, customer_select, {}, {id: 'customer_select_2', class: 'form-control lead-form-input-style', required: true} %>
-        <button class="btn btn-success" type="submit">Search</button>
-        <a href="<%= new_customers_path %>"><button class="btn btn-warning" style="margin-left: 30px;">Add New</button></a>
-    <% end %>
+    <div>
+        <h2>Add User Button</h2>
+        <a href="<%= new_customers_path %>"><button class="btn btn-warning">Add New</button></a>
+    </div>
     <div class="pt-5">
-        <%= render "customers/show", customer: @customer if @customer.present? %>
+        <h2>Search User Form</h2>
+        <%= form_with url: '/customers/fetch', method: :get do |form| %>
+            <%= form.select :customer_id, customer_select, {}, {id: 'customer_select_2', class: 'form-control lead-form-input-style', required: true} %>
+            <button class="btn btn-success" type="submit">Search</button>
+        <% end %>
     </div>
     <% if @current_employee&.email == "hemanshu@rainbow.com" %>
-        <div>
-            <h2>Download Customer Order Data (Old)</h2>
-            <a href="/leads/generate_lead_data.csv">
-                <button type="button" class="btn btn-success">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-save" viewBox="0 0 16 16">
-                        <path d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L7.5 9.293V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z"/>
-                    </svg> Export
-                </button>
-            </a>
-            
-            <h2>Download Customer Order Data (New)</h2>
+        <div class="pt-5">
+            <h2>Merge Users Form</h2>
+            <%= form_with url: '/customers/merge' do |form| %>
+                <%= form.select :customers, customer_select, {}, {id: 'customer_select_2_for_merge', class: 'form-control lead-form-input-style', required: true, multiple: true} %>
+                <%= form.submit "Merge", class: 'btn btn-success', :data => {:confirm => 'Are you sure?'} %>
+            <% end %>
+        </div>
+        <div class="pt-5">
+            <h2>Download Customer Order Data</h2>
             <a href="/customers/generate_customer_items_data.csv">
                 <button type="button" class="btn btn-success">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-save" viewBox="0 0 16 16">
@@ -28,4 +29,22 @@
             </a>
         </div>
     <% end %>
+</div>
+
+<div class="modal fade" id="customerShowModal" tabindex="-1" aria-labelledby="customerForm" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="customerFormModalLabel">New Customer</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <%= render "customers/show", customer: @customer if @customer.present? %>
+        </div>
+        <div class="modal-footer">
+            <span class="edit-button cursor-pointer" id="customer-close" data-bs-dismiss="modal">Close</span>
+            <button type="button" class="btn btn-warning" id="popup-customer-submit">Save</button>
+        </div>
+        </div>
+    </div>
 </div>

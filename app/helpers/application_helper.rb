@@ -47,11 +47,11 @@ module ApplicationHelper
 
     def displayName(customer)
         if customer.name.present? and customer.company_name.present?
-            customer.name + " - " + customer.company_name
+            customer.name + " - " + customer.company_name + " - " + customer.id.to_s
         elsif customer.name.present?
-            customer.name
+            customer.name + " - " + customer.id.to_s
         else
-            customer.company_name
+            customer.company_name + " - " + customer.id.to_s
         end
     end
 

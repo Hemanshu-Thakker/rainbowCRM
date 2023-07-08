@@ -5,7 +5,10 @@ class CustomersController < ApplicationController
 
     def fetch_customer
         @customer = Customer.find_by(id: params[:customer_id])
-        render 'index'
+        
+        respond_to do |format|
+            format.html
+        end
     end
 
     def new
@@ -58,8 +61,18 @@ class CustomersController < ApplicationController
         end
     end
 
+    def merge_customers
+        valid_customers = merge_params["customers"].reject(&:blank?)
+        Customer.merge_customers_logic(valid_customers)
+        redirect_to '/customers/index'
+    end
+
     private
     def customer_params
         params.require(:customer).permit(:name, :company_name, :mobile, :email, :note)
+    end
+
+    def merge_params
+        params.permit(:customers => [])
     end
 end
