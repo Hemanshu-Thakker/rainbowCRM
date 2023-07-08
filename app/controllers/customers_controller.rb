@@ -49,8 +49,9 @@ class CustomersController < ApplicationController
 
     def destroy
         @customer = Customer.find_by(id: params[:id])
-        @customer.destroy
-        redirect_to '/admin_dashboard'
+        @customer.destroy if @current_employee.email == "hemanshu@rainbow.com"
+        # Do some toast message implementation here
+        redirect_to '/customers/index'
     end
 
     def export_customer_order_data

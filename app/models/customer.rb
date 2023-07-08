@@ -1,5 +1,5 @@
 class Customer < ApplicationRecord
-    has_many :leads
+    has_many :leads, dependent: :destroy
     has_rich_text :note
 
     scope :last_month, lambda {

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   post 'search/tickets', to: 'leads#find_filter'
   get 'customers/index', to: 'customers#index'
   get 'customers/fetch', to: 'customers#fetch_customer'
+  delete 'customers/delete', to: 'customers#destroy', as: "customers_destroy"
   post 'customers/merge', to: 'customers#merge_customers'
   get '/customers/generate_customer_items_data', to: 'customers#export_customer_order_data'
   get '/work/index', to: 'application#work_index'

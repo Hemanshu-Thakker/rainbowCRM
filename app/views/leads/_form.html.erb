@@ -36,7 +36,8 @@
             </div>
 
             <%= hidden_field_tag :"lead[created_by]", current_employee_id %>
-
+        </div>
+        <div class="col-lg-6">
             <div class='lead-form-input'>
                 <%= form.label :employee, "Assign To" %>
                 <%= form.select :employee_id, employee_select, {}, {class: 'form-control lead-form-input-style'} %>
@@ -46,44 +47,14 @@
                 <%= form.label :status, "Status" %>
                 <%= form.select :status, status_select_just_in, {}, {class: 'form-control lead-form-input-style'} %>
             </div>
-
-            <div class='lead-form-input'>
-                <%= form.label :paper_type, "Paper Type" %>
-                <%= form.text_area :paper_type, class: 'form-control lead-form-input-style' %>
-            </div>
         </div>
-        <div class="col-lg-6">
-            <div class='lead-form-input'>
-                <%= form.label :colour, "Colour" %>
-                <%= form.text_area :colour, class: 'form-control lead-form-input-style' %>
+        <div class=''>
+                <%= form.label :description, "Description" %>
+                <%= form.rich_text_area :description, class: 'form-control ', input_html: { rows: 10 } %>
             </div>
-
-            <div class='lead-form-input'>
-                <%= form.label :size, "Size" %>
-                <%= form.text_area :size, class: 'form-control lead-form-input-style' %>
-            </div>
-
-            <div class='lead-form-input'>
-                <%= form.label :slip_no, "Slip. No" %>
-                <%= form.text_field :slip_no, class: 'form-control lead-form-input-style' %>
-            </div>
-
-            <div class='lead-form-input'>
-                <%= form.label :s_no, "S. No" %>
-                <%= form.text_field :s_no, class: 'form-control lead-form-input-style' %>
-            </div>
-
-            <div class='lead-form-input'>
-                <%= form.label :payment_details, "Payment Details" %>
-                <%= form.text_field :payment_details, class: 'form-control lead-form-input-style' %>
-            </div>
-        </div>
     </div>
 
-    <div class=''>
-        <%= form.label :description, "Description" %>
-        <%= form.rich_text_area :description, class: 'form-control ' %>
-    </div>
+    
 
     <div class='lead-form-input' style="text-align: right;padding-top: 20px;">
         <span class="btn btn-warning"><a href="<%= root_path %>">Cancel</a></span>
