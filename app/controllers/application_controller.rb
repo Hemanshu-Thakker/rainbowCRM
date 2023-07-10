@@ -45,7 +45,7 @@ class ApplicationController < ActionController::Base
     end
 
     def start_month
-        Date.parse('march, 2023').strftime("%B %Y")
+        Date.parse('march, 2022').strftime("%B %Y")
     end
 
     def next_month(current_month)
