@@ -8,6 +8,12 @@ class Customer < ApplicationRecord
         where('created_at BETWEEN ? and ?',previous_month_begin,previous_month_end)
     }
 
+    scope :for_month, -> (specific_month) {
+        specific_month_begin = (Date.parse(specific_month)).beginning_of_month
+        specific_month_end = (Date.parse(specific_month)).end_of_month
+        where('created_at BETWEEN ? and ?',specific_month_begin,specific_month_end)
+    }
+
     def self.to_csv
 		attributes = %w{id customer_info items}
 		

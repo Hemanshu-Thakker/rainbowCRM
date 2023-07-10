@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'application#dashboard'
   post '/leads/update/status', to: 'leads#update_status_complete', as: "lead_update_status"
   post '/lead_generation', to: 'leads#lead_generation'
-  get '/leads/generate', to: 'application#export'
+  get '/leads/generate', to: 'application#export', as: "lead_generate_csv"
   get '/leads/generate_lead_data', to: 'application#export_lead_data'
   get '/website_leads', to: 'leads#website_leads', as: "website_leads"
   post '/update/assigned_to', to: 'leads#update_assigned_to', as: "update_assigned_to"

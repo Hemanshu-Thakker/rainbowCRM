@@ -26,6 +26,12 @@ class Lead < ApplicationRecord
         where('created_at BETWEEN ? and ?',previous_month_begin,previous_month_end)
     }
 
+	scope :for_month, -> (specific_month) {
+        month_begin = (Date.parse(specific_month)).beginning_of_month
+        month_end = (Date.parse(specific_month)).end_of_month
+        where('created_at BETWEEN ? and ?',month_begin,month_end)
+    }
+
 	after_create :set_activities
 	after_update :set_activities_for_status
 
