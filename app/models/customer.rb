@@ -28,8 +28,8 @@ class Customer < ApplicationRecord
 
     def customer_info
 		master_string = ""
-        master_string += "#{name} |" if name.present?
         master_string += "#{company_name} |" if company_name.present?
+        master_string += "#{name} |" if name.present?
         master_string += "#{mobile} |" if mobile.present?
         master_string += "#{email}" if email.present?
         master_string
