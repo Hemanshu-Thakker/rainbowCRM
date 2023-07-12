@@ -1,79 +1,86 @@
+# frozen_string_literal: true
+
 class CustomersController < ApplicationController
-    def index
-        @customer = nil
-    end
+  def index
+    @customer = nil
+  end
 
-    def fetch_customer
-        @customer = Customer.find_by(id: params[:customer_id])
-        
-        respond_to do |format|
-            format.html
-        end
-    end
+  def fetch_customer
+    @customer = Customer.find_by(id: params[:customer_id])
 
-    def new
-        @customer = Customer.new
-    end
+    respond_to(&:html)
+  end
 
-    def edit
-        @customer = Customer.find_by(id: params[:id])
-    end
+  def new
+    @customer = Customer.new
+  end
 
-    def show
-        @customer = Customer.find_by(id: params[:id])
-    end
+  def edit
+    @customer = Customer.find_by(id: params[:id])
+  end
 
-    def create
-        @customer = Customer.new(customer_params)
-        if @customer.save
-            if params["customer"]["remote"] == "true"
-                render json: @customer
-            else
-                redirect_to customers_path(id: @customer)
-            end
-        elsif params["customer"]["remote"] == true
-            render json: {error: 'Record not saved!'}
-        else
-            render "new"
-        end
-    end
+  def show
+    @customer = Customer.find_by(id: params[:id])
+  end
 
-    def update
-        @customer = Customer.find_by(id: params[:id])
-        if @customer.update(customer_params)
-            redirect_to customers_path(id: @customer)
-        else
-            render "edit"
-        end
+  def create
+    @customer = Customer.new(customer_params)
+    if @customer.save
+      if params['customer']['remote'] == 'true'
+        render json: @customer
+      else
+        redirect_to customers_path(id: @customer)
+      end
+    elsif params['customer']['remote'] == true
+      render json: { error: 'Record not saved!' }
+    else
+      render 'new'
     end
+  end
 
-    def destroy
-        @customer = Customer.find_by(id: params[:id])
-        @customer.destroy if @current_employee.email == "hemanshu@rainbow.com"
-        # Do some toast message implementation here
-        redirect_to '/customers/index'
+  def update
+    @customer = Customer.find_by(id: params[:id])
+    if @customer.update(customer_params)
+      redirect_to customers_path(id: @customer)
+    else
+      render 'edit'
     end
+  end
 
-    def export_customer_order_data
-        @records = Customer.all
-        
-        respond_to do |format|
-            format.csv { send_data @records.to_csv, filename: "customer-data-new.csv" }
-        end
-    end
+  def destroy
+    @customer = Customer.find_by(id: params[:id])
+    @customer.destroy if @current_employee.email == 'hemanshu@rainbow.com'
+    # Do some toast message implementation here
+    redirect_to '/customers/index'
+  end
 
-    def merge_customers
-        valid_customers = merge_params["customers"].reject(&:blank?)
-        Customer.merge_customers_logic(valid_customers)
-        redirect_to '/customers/index'
-    end
+  def export_customer_order_data
+    @records = Customer.all
 
-    private
-    def customer_params
-        params.require(:customer).permit(:name, :company_name, :mobile, :email, :note)
+    respond_to do |format|
+      format.csv { send_data @records.to_csv, filename: 'customer-data-new.csv' }
     end
+  end
 
-    def merge_params
-        params.permit(:customers => [])
-    end
+  def merge_customers
+    valid_customers = merge_params['customers'].reject(&:blank?)
+    Customer.merge_customers_logic(valid_customers)
+    redirect_to '/customers/index'
+  end
+
+  def called
+    @customer = Customer.find_by(id: params[:id])
+    new_note = @customer.note+"\nCalled at #{DateTime.now}"
+    @customer.update(note: new_note)
+  end
+
+  private
+
+  def customer_params
+    params.require(:customer).permit(:name, :company_name, :mobile, :email, :note)
+  end
+
+  def merge_params
+    params.permit(customers: [])
+  end
 end

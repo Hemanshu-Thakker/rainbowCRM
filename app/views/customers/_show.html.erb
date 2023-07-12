@@ -29,5 +29,6 @@
 
 <div class="button-div">
     <span class="btn btn-warning"><a href="<%= edit_customers_path(id: @customer) %>">Edit</a></span>
+    <span class="btn btn-success"><a method="POST" href="/customers/called?id=#{@customer.id}">Called</a></span>
     <span class="btn btn-danger"><a href="<%= customers_destroy_path(id: @customer) %>" data-method="delete" data-confirm="Are you sure ?">Delete</a></span>
 </div> 
